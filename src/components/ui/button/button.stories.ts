@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { LogOutIcon } from '@/assets/iconComponents/LogOutIcon'
+import { Typography } from '@/components/ui/typography'
+
 import { Button } from './'
 
 const meta = {
@@ -24,7 +27,15 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    children: 'Primary Button',
+    children: Typography({ children: 'Button primary', variant: 'subtitle2' }),
+    disabled: false,
+    variant: 'primary',
+  },
+}
+
+export const Primary2: Story = {
+  args: {
+    children: [LogOutIcon({}), Typography({ children: 'Button primary', variant: 'subtitle2' })],
     disabled: false,
     variant: 'primary',
   },
@@ -32,21 +43,29 @@ export const Primary: Story = {
 
 export const Secondary: Story = {
   args: {
-    children: 'Secondary Button',
+    children: Typography({ children: 'Secondary button', variant: 'subtitle2' }),
+    disabled: false,
+    variant: 'secondary',
+  },
+}
+
+export const Secondary2: Story = {
+  args: {
+    children: [LogOutIcon({}), Typography({ children: 'Secondary button', variant: 'subtitle2' })],
     disabled: false,
     variant: 'secondary',
   },
 }
 export const Tertiary: Story = {
   args: {
-    children: 'Tertiary Button',
+    children: Typography({ children: 'Tertiary button', variant: 'subtitle2' }),
     disabled: false,
     variant: 'tertiary',
   },
 }
 export const Link: Story = {
   args: {
-    children: 'Tertiary Button',
+    children: Typography({ children: 'Link-button', variant: 'subtitle1' }),
     disabled: false,
     variant: 'link',
   },
@@ -54,7 +73,7 @@ export const Link: Story = {
 
 export const FullWidth: Story = {
   args: {
-    children: 'Full Width Button',
+    children: Typography({ children: 'Full width button', variant: 'subtitle2' }),
     disabled: false,
     fullWidth: true,
     variant: 'primary',
@@ -64,7 +83,7 @@ export const FullWidth: Story = {
 export const AsLink: Story = {
   args: {
     as: 'a',
-    children: 'Link that looks like a button',
+    children: Typography({ children: 'Link that looks like a button', variant: 'subtitle2' }),
     href: 'https://www.google.com',
     variant: 'primary',
   },
