@@ -35,13 +35,16 @@ export const Primary: Story = {
 
 export const Primary2: Story = {
   args: {
+    children: (
+      <>
+        <Logout />
+        <Typography as={'p'} variant={'subtitle2'}>
+          Primary button
+        </Typography>
+      </>
+    ),
     disabled: false,
     variant: 'primary',
-    children:(
-        <>
-            <Logout/>
-        </>
-    )
   },
 }
 
@@ -55,7 +58,14 @@ export const Secondary: Story = {
 
 export const Secondary2: Story = {
   args: {
-    children: [<Logout/>, Typography({ children: 'Secondary button', variant: 'subtitle2' })],
+    children: (
+      <>
+        <Logout />
+        <Typography as={'p'} variant={'subtitle2'}>
+          Secondary button
+        </Typography>
+      </>
+    ),
     disabled: false,
     variant: 'secondary',
   },
