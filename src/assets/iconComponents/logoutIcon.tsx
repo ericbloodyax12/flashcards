@@ -11,4 +11,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
 )
 const ForwardRef = forwardRef(SvgComponent)
 
-export const Logout = memo(ForwardRef)
+export const LogoutIcon = memo(ForwardRef)
