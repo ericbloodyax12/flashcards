@@ -1,6 +1,4 @@
 .typography {
-  all: unset;
-
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-m);
 }
