@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { LogOutIcon } from '@/assets/iconComponents/LogOutIcon'
+import { Logout } from '@/assets/iconComponents/logout'
 import { Typography } from '@/components/ui/typography'
 
 import { Button } from './'
@@ -35,9 +35,13 @@ export const Primary: Story = {
 
 export const Primary2: Story = {
   args: {
-    children: [LogOutIcon({}), Typography({ children: 'Button primary', variant: 'subtitle2' })],
     disabled: false,
     variant: 'primary',
+    children:(
+        <>
+            <Logout/>
+        </>
+    )
   },
 }
 
@@ -51,7 +55,7 @@ export const Secondary: Story = {
 
 export const Secondary2: Story = {
   args: {
-    children: [LogOutIcon({}), Typography({ children: 'Secondary button', variant: 'subtitle2' })],
+    children: [<Logout/>, Typography({ children: 'Secondary button', variant: 'subtitle2' })],
     disabled: false,
     variant: 'secondary',
   },
