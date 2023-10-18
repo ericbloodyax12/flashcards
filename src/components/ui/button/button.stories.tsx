@@ -32,6 +32,9 @@ export const Primary: Story = {
     disabled: false,
     variant: 'primary',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export const Primary2: Story = {
@@ -46,6 +49,9 @@ export const Primary2: Story = {
     disabled: false,
     variant: 'primary',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export const Secondary: Story = {
@@ -54,6 +60,9 @@ export const Secondary: Story = {
     className: 's.button',
     disabled: false,
     variant: 'secondary',
+  },
+  parameters: {
+    layout: 'centered',
   },
 }
 
@@ -69,6 +78,9 @@ export const Secondary2: Story = {
     disabled: false,
     variant: 'secondary',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 export const Tertiary: Story = {
   args: {
@@ -77,6 +89,9 @@ export const Tertiary: Story = {
     disabled: false,
     variant: 'tertiary',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 export const Link: Story = {
   args: {
@@ -84,6 +99,9 @@ export const Link: Story = {
     className: 's.button',
     disabled: false,
     variant: 'link',
+  },
+  parameters: {
+    layout: 'centered',
   },
 }
 
@@ -95,6 +113,9 @@ export const FullWidth: Story = {
     fullWidth: true,
     variant: 'primary',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export const AsLink: Story = {
@@ -104,5 +125,8 @@ export const AsLink: Story = {
     className: 's.button',
     href: 'https://www.google.com',
     variant: 'primary',
+  },
+  parameters: {
+    layout: 'centered',
   },
 }

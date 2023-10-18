@@ -36,6 +36,9 @@ export const Large: Story = {
     children: 'large title',
     variant: 'large',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export const H1: Story = {
@@ -43,6 +46,9 @@ export const H1: Story = {
     as: 'h1',
     children: 'h1 title',
     variant: 'h1',
+  },
+  parameters: {
+    layout: 'centered',
   },
 }
 
@@ -52,6 +58,9 @@ export const H2: Story = {
     children: 'h2 title',
     variant: 'h2',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export const H3: Story = {
@@ -60,12 +69,18 @@ export const H3: Story = {
     children: 'h3 title',
     variant: 'h3',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export const Body1: Story = {
   args: {
     children: 'body1 text',
     variant: 'body1',
+  },
+  parameters: {
+    layout: 'centered',
   },
 }
 
@@ -75,12 +90,18 @@ export const Subtitle1: Story = {
     children: 'subtitle1 title',
     variant: 'subtitle1',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export const Body2: Story = {
   args: {
     children: 'body2 text',
     variant: 'body2',
+  },
+  parameters: {
+    layout: 'centered',
   },
 }
 
@@ -90,6 +111,9 @@ export const Subtitle2: Story = {
     children: 'subtitle2 title',
     variant: 'subtitle2',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export const Caption: Story = {
@@ -97,12 +121,18 @@ export const Caption: Story = {
     children: 'caption text',
     variant: 'caption',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export const Overline: Story = {
   args: {
     children: 'overline text',
     variant: 'overline',
+  },
+  parameters: {
+    layout: 'centered',
   },
 }
 
@@ -114,6 +144,9 @@ export const Link1: Story = {
     target: '_blank',
     variant: 'link1',
   },
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export const Link2: Story = {
@@ -123,5 +156,8 @@ export const Link2: Story = {
     href: 'https://www.google.com',
     target: '_blank',
     variant: 'link2',
+  },
+  parameters: {
+    layout: 'centered',
   },
 }
