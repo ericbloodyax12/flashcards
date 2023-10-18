@@ -1,13 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Input } from './'
+import { TextField } from './'
 
 const meta = {
-  argTypes: {},
-  component: Input,
+  argTypes: {
+    variant: {
+      control: { type: 'radio' },
+      options: ['default', 'password', 'search'],
+    },
+  },
+  component: TextField,
   tags: ['autodocs'],
   title: 'Components/Input',
-} satisfies Meta<typeof Input>
+} satisfies Meta<typeof TextField>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -15,19 +20,25 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     disabled: false,
+    variant: 'default',
   },
 }
 
-export const FileInput: Story = {
+export const Password: Story = {
   args: {
     disabled: false,
-    type: 'file',
+    variant: 'password',
+  },
+}
+export const Search: Story = {
+  args: {
+    disabled: false,
+    variant: 'search',
   },
 }
 export const FullWidth: Story = {
   args: {
     disabled: false,
     fullWidth: true,
-    variant: 'input',
   },
 }

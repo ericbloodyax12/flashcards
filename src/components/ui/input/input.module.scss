@@ -1,0 +1,17 @@
+@import 'utils/common-styles-input/common-styles-input';
+
+.default {
+  @include common-styles-input;
+}
+
+.password {
+  @include common-styles-input;
+}
+
+.search {
+  @include common-styles-input;
+}
+
+.fullWidth {
+  width: 100%;
+}

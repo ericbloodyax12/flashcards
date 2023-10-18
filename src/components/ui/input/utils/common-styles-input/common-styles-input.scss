@@ -3,18 +3,30 @@
   height: 36px;
 
   background-color: transparent;
-  border: 1px solid var(--color-accent-100);
+  border: 1px solid var(--color-dark-500);
   border-radius: 2px;
 
   &:active {
-    // Ваши стили для :active состояния
+    border: 1px solid var(--color-light-100);
   }
 
   &:hover {
-    // Ваши стили для :hover состояния
+    background-color: var(--color-dark-700);
+    border: 1px solid var(--color-dark-100);
   }
 
   &:focus {
-    // Ваши стили для :focus состояния
+    background-color: transparent;
+    border: 2px solid var(--color-info-700);
+    border-radius: 2px;
+    outline: 1px solid var(--color-info-700);
+  }
+
+  &:disabled {
+  }
+
+  &.error {
+    color: var(--color-danger-300);
+    border-color: var(--color-danger-300);
   }
 }
