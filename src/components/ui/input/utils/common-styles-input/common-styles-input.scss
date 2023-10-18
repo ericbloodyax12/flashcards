@@ -1,0 +1,20 @@
+@mixin common-styles-input {
+  width: 284px;
+  height: 36px;
+
+  background-color: transparent;
+  border: 1px solid var(--color-accent-100);
+  border-radius: 2px;
+
+  &:active {
+    // Ваши стили для :active состояния
+  }
+
+  &:hover {
+    // Ваши стили для :hover состояния
+  }
+
+  &:focus {
+    // Ваши стили для :focus состояния
+  }
+}
