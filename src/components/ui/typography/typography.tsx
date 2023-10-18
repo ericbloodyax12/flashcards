@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementType } from 'react'
 
-import s from './typography.module.css'
+import s from './typography.module.scss'
 type TypographyProps<T extends ElementType = 'p'> = {
   as?: T
   variant?:
