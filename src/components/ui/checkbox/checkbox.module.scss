@@ -1,6 +1,43 @@
 .container {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-dark-900);
 }
 
-.root {
+.label {
   cursor: pointer;
+  padding-right: 10px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  border: 3px solid var(--color-light-900);
+  border-radius: 4px;
+}
+
+.checked {
+  border-color: transparent;
+
+  .indicator {
+    opacity: 1;
+  }
+}
+
+.disabled {
+  .label {
+    cursor: default;
+    color: var(--color-checkbox-disabled);
+  }
+
+  .checkbox {
+    cursor: inherit;
+    color: var(--color-light-700);
+    background-color: var(--color-light-700);
+  }
 }

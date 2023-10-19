@@ -1,28 +1,47 @@
-import { FC, useState } from 'react'
+import { ComponentPropsWithoutRef, ElementType, FC } from 'react'
 
+import Check from '@/assets/iconComponents/check'
+import { Typography } from '@/components/ui/typography'
 import * as RadixCheckbox from '@radix-ui/react-checkbox'
-import { CheckboxProps } from '@radix-ui/react-checkbox'
 
 import s from './checkbox.module.scss'
 
 export type Props = {
   checked?: boolean
   classname?: string
+  disabled: boolean
+  id: string
   label?: string
   onChange: (checked: boolean) => void
-} & CheckboxProps
-export const Checkbox: FC<CheckboxProps> = (props: CheckboxProps) => {
-  const [checked, setChecked] = useState(props.defaultChecked)
+} & ComponentPropsWithoutRef<ElementType>
+export const Checkbox: FC<Props> = (
+  props: Props & Omit<ComponentPropsWithoutRef<ElementType>, keyof Props>
+) => {
+  const { checked, disabled, id, label, onChange, ...rest } = props
+  const containerClassName = `${s.container}${props.disabled ? s.disabled : ''}`
   const rootClassName = `${s.checkbox} ${checked ? s.checked : ''}`
 
   return (
-    <div className={s.container}>
+    <div className={containerClassName}>
+      {label && (
+        <Typography as={'label'} className={s.label} variant={'body2'}>
+          {label}
+        </Typography>
+      )}
       <RadixCheckbox.Root
-        checked={props.checked}
+        checked={checked}
         className={rootClassName}
-        onChange={() => setChecked}
-        {...props}
-      ></RadixCheckbox.Root>
+        disabled={disabled}
+        id={id}
+        onCheckedChange={onChange}
+        {...rest}
+      >
+        {checked && (
+          <RadixCheckbox.Indicator className={s.indicator}>
+            <Check />
+          </RadixCheckbox.Indicator>
+        )}
+      </RadixCheckbox.Root>
     </div>
   )
 }
