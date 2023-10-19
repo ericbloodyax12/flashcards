@@ -1,5 +1,10 @@
 @import 'utils/common-styles-input/common-styles-input';
 
+.inputContainer {
+  position: relative;
+  display: flex;
+}
+
 .default {
   @include common-styles-input;
 }
@@ -10,6 +15,19 @@
 
 .search {
   @include common-styles-input;
+}
+
+.icon {
+  position: absolute; // Позиционируем иконку абсолютно внутри родительского элемента
+  z-index: 1;
+  top: 50%; // Размещаем её вертикально по центру относительно родительского контейнера
+  left: 10px; // Устанавливаем её слева от поля ввода
+  transform: translateY(-50%); // Дополнительная коррекция для вертикального центрирования
+
+  width: 20px;
+  height: 20px;
+
+  color: var(--color-dark-100);
 }
 
 .fullWidth {
