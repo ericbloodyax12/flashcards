@@ -11,19 +11,12 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-  parameters: {
-    layout: 'centered',
-  },
-}
+export const Default: Story = {}
 
 export const LightTheme: Story = {
   args: {
     style: {
       backgroundColor: 'var(--color-dark-100)',
     },
-  },
-  parameters: {
-    layout: 'centered',
   },
 }

@@ -24,10 +24,9 @@ export const From_2_to_10: Story = {
     style: size,
     value: [2, 10],
   },
-  parameters: { layout: 'centered' },
 }
 
-const Custom_range = () => {
+export const Any_range = () => {
   const [value, setValue] = useState([0, 100])
 
   return (
@@ -35,9 +34,4 @@ const Custom_range = () => {
       <Slider onValueChange={e => setValue(e)} style={size} value={value} />
     </div>
   )
-}
-
-export const Any_range: Story = {
-  parameters: { layout: 'centered' },
-  render: () => <Custom_range />,
 }
