@@ -20,6 +20,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     disabled: false,
+    label: 'Input',
     variant: 'default',
   },
 }
@@ -27,6 +28,7 @@ export const Default: Story = {
 export const Password: Story = {
   args: {
     disabled: false,
+    label: 'Input',
     variant: 'password',
   },
 }
@@ -34,6 +36,12 @@ export const Search: Story = {
   args: {
     disabled: false,
     variant: 'search',
+  },
+}
+export const Error: Story = {
+  args: {
+    disabled: false,
+    errorMessage: 'Error',
   },
 }
 export const FullWidth: Story = {

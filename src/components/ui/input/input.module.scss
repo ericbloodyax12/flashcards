@@ -12,6 +12,8 @@
 
 .password {
   @include common-styles-input;
+
+  padding-right: 40px; // Ширина иконки глаза + дополнительный отступ
 }
 
 .search {
@@ -45,6 +47,22 @@
   height: 20px;
 
   color: var(--color-dark-100);
+}
+
+.label {
+  position: absolute;
+  bottom: 33px; // Разместить над контейнером
+  left: 0; // Разместить слева
+
+  width: 32px;
+  height: 24px;
+
+  color: var(--color-dark-100);
+}
+
+.error {
+  color: var(--color-danger-300);
+  border-color: var(--color-danger-300);
 }
 
 .fullWidth {
