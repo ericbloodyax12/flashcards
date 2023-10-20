@@ -2,7 +2,8 @@
 
 .inputContainer {
   position: relative;
-  display: flex;
+  width: 284px;
+  height: 36px;
 }
 
 .default {
@@ -15,6 +16,8 @@
 
 .search {
   @include common-styles-input;
+
+  padding-left: 40px; // Это значение должно быть больше, чем левый отступ иконки
 }
 
 .icon {
@@ -23,6 +26,20 @@
   top: 50%; // Размещаем её вертикально по центру относительно родительского контейнера
   left: 10px; // Устанавливаем её слева от поля ввода
   transform: translateY(-50%); // Дополнительная коррекция для вертикального центрирования
+
+  width: 20px;
+  height: 20px;
+
+  color: var(--color-dark-100);
+}
+
+.eyeIcon,
+.eyeIconOff {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: calc(100% - 20px - 10px);
+  transform: translateY(-50%);
 
   width: 20px;
   height: 20px;
