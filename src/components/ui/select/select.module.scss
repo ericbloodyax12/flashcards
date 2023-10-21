@@ -37,10 +37,6 @@
 }
 
 .trigger {
-  &:active {
-    color: red;
-  }
-
   &:hover {
     background-color: var(--color-dark-500);
   }
