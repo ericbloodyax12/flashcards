@@ -18,13 +18,21 @@ export const SelectItem = React.forwardRef<
   )
 })
 type SelectRadix = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
+  errorMessage?: string
   fontVariant?: TypographyProps['variant']
   items: string[]
   title?: string
 }
 export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, SelectRadix>(
   (props: SelectRadix, ref) => {
-    const { children = undefined, fontVariant = 'body1', items, title, ...rest } = props
+    const {
+      children = undefined,
+      errorMessage,
+      fontVariant = 'body1',
+      items,
+      title,
+      ...rest
+    } = props
     const [open, setOpen] = useState(false)
     const onOpenHandler = (e: ((prevState: boolean) => boolean) | boolean) => setOpen(e)
 
