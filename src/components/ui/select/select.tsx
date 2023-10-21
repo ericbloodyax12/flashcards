@@ -51,8 +51,8 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
             <SelectPrimitive.Content className={s.border} {...rest}>
               {children
                 ? children
-                : items.map((item, i) => (
-                    <SelectItem key={i} value={item}>
+                : items.map(item => (
+                    <SelectItem key={item} value={item}>
                       <Typography variant={fontVariant}>{item}</Typography>
                     </SelectItem>
                   ))}
