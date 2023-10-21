@@ -5,7 +5,7 @@ import { EyeOffIcon } from '@/assets/iconComponents/eyeoff'
 import { SearchIcon } from '@/assets/iconComponents/search'
 import { Typography } from '@/components/ui/typography'
 
-import s from './input.module.scss'
+import s from './textField.module.scss'
 // todo
 export type InputProps = {
   errorMessage?: string
