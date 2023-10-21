@@ -10,13 +10,9 @@ import s from './select.module.scss'
 export const SelectItem = React.forwardRef<
   ElementRef<typeof SelectPrimitive.Item>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ children, className, ...props }, forwardedRef) => {
+>(({ children, className, ...props }, ref) => {
   return (
-    <SelectPrimitive.Item
-      className={clsx(s.select, s.item, className)}
-      {...props}
-      ref={forwardedRef}
-    >
+    <SelectPrimitive.Item className={clsx(s.select, s.item, className)} {...props} ref={ref}>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>
   )
@@ -27,16 +23,8 @@ type SelectRadix = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
   title?: string
 }
 export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, SelectRadix>(
-  (props: SelectRadix, forwardedRef) => {
-    const {
-      children = undefined,
-      disabled,
-      fontVariant,
-      items,
-      onValueChange,
-      title,
-      ...rest
-    } = props
+  (props: SelectRadix, ref) => {
+    const { children = undefined, fontVariant = 'body1', items, title, ...rest } = props
     const [open, setOpen] = useState(false)
     const onOpenHandler = (e: ((prevState: boolean) => boolean) | boolean) => setOpen(e)
 
@@ -47,22 +35,16 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
             <Typography variant={'body2'}>{title}</Typography>
           </div>
         )}
-        <SelectPrimitive.Root
-          defaultValue={items[0]}
-          disabled={disabled}
-          onOpenChange={onOpenHandler}
-          onValueChange={onValueChange}
-          {...rest}
-        >
+        <SelectPrimitive.Root defaultValue={items[0]} onOpenChange={onOpenHandler} {...rest}>
           <SelectPrimitive.Trigger
             aria-label={'Select-box'}
             className={clsx(s.border, s.select, s.trigger)}
-            ref={forwardedRef}
+            ref={ref}
             {...rest}
           >
             <div className={s.container}>
               <SelectPrimitive.Value />
-              <ArrowIcon className={clsx(s.icon, open ? s.rotate : '')} disabled={disabled} />
+              <ArrowIcon className={clsx(s.icon, open ? s.rotate : '')} disabled={rest.disabled} />
             </div>
           </SelectPrimitive.Trigger>
           <SelectPrimitive.Portal {...rest}>
