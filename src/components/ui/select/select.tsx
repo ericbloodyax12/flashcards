@@ -10,9 +10,9 @@ import s from './select.module.scss'
 export const SelectItem = React.forwardRef<
   ElementRef<typeof SelectPrimitive.Item>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ children, className, ...rest }, ref) => {
+>(({ children, className, ...props }, ref) => {
   return (
-    <SelectPrimitive.Item className={clsx(s.select, s.item, className)} {...rest} ref={ref}>
+    <SelectPrimitive.Item className={clsx(s.select, s.item, className)} {...props} ref={ref}>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>
   )
