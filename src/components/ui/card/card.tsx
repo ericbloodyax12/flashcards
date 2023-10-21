@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType, LegacyRef, forwardRef } from 'react'
+import React, { ComponentPropsWithoutRef, ElementType, forwardRef } from 'react'
 
 import s from './card.module.scss'
 
@@ -10,7 +10,7 @@ export type CardProps<T extends ElementType = 'div'> = {
 export const Card = forwardRef(
   <T extends ElementType = 'div'>(
     props: CardProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof CardProps<T>>,
-    ref: LegacyRef<HTMLDivElement> | undefined
+    ref: React.ForwardedRef<HTMLDivElement> | undefined
   ) => {
     const { as: Component = 'div', className, ...rest } = props
 
