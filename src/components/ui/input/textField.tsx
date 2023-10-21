@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, forwardRef, useState } from 'react'
+import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
 import { EyeIcon } from '@/assets/iconComponents/eye'
 import { EyeOffIcon } from '@/assets/iconComponents/eyeoff'
@@ -18,6 +18,10 @@ export type InputProps = {
 export const TextField = forwardRef<HTMLInputElement, InputProps>(props => {
   const { className, errorMessage, fullWidth, label, search, variant = 'default', ...rest } = props
   const [showPassword, setShowPassword] = useState(false)
+  const [inputValue, setInputValue] = useState('')
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value)
+  }
 
   return (
     <div className={`${s.inputContainer} ${fullWidth ? s.fullWidth : ''}`}>
@@ -29,7 +33,9 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>(props => {
         className={`${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className} ${
           errorMessage ? s.error : ''
         }`}
+        onChange={handleInputChange}
         type={variant}
+        value={inputValue}
         {...rest}
       />
 
