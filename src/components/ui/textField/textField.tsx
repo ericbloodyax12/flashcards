@@ -1,12 +1,13 @@
-import { ChangeEvent, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
+import { ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
 import { EyeIcon } from '@/assets/iconComponents/eye'
 import { EyeOffIcon } from '@/assets/iconComponents/eyeoff'
 import { SearchIcon } from '@/assets/iconComponents/search'
 import { Typography } from '@/components/ui/typography'
+import { clsx } from 'clsx'
 
 import s from './textField.module.scss'
-// todo
+// todo сделать по умолчанию 100% в ширину, а потом уже подгонять под размеры
 export type InputProps = {
   errorMessage?: string
   fullWidth?: boolean
@@ -15,13 +16,23 @@ export type InputProps = {
   variant?: 'default' | 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 
-export const TextField = forwardRef<HTMLInputElement, InputProps>(props => {
+export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { className, errorMessage, fullWidth, label, search, variant = 'default', ...rest } = props
   const [showPassword, setShowPassword] = useState(false)
-  const [inputValue, setInputValue] = useState('')
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value)
-  }
+  // const isPassword = type === 'password'
+  // const iconToRender = getIcon(isPassword, showPassword)
+
+  // const handleShowPasswordClicked = () => {
+  //   setShowPassword(value => !value)
+  // }
+
+  const inputClassName = clsx(
+    s.input,
+    s[variant],
+    className,
+    fullWidth && s.fullWidth,
+    errorMessage && s.error
+  )
 
   return (
     <div className={`${s.inputContainer} ${fullWidth ? s.fullWidth : ''}`}>
@@ -29,15 +40,7 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>(props => {
         {label}
       </Typography>
       {variant === 'search' && <SearchIcon className={s.icon} />}
-      <input
-        className={`${s[variant]} ${fullWidth ? s.fullWidth : ''} ${className} ${
-          errorMessage ? s.error : ''
-        }`}
-        onChange={handleInputChange}
-        type={variant}
-        value={inputValue}
-        {...rest}
-      />
+      <input className={inputClassName} type={variant} {...rest} ref={ref} />
 
       <button
         onClick={() => {
@@ -46,7 +49,7 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>(props => {
         style={{ all: 'unset', backgroundColor: 'transparent' }}
       >
         {showPassword
-          ? variant === 'password' && <EyeOffIcon className={s.eyeIconOff} />
+          ? variant === 'password' && <EyeOffIcon className={s.eyeIcon} />
           : variant === 'password' && <EyeIcon className={s.eyeIcon} />}
       </button>
       <Typography className={s.error} variant={'caption'}>
@@ -55,3 +58,14 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>(props => {
     </div>
   )
 })
+
+// function getIcon(isPassword: boolean, showPassword: boolean) {
+//   if (!isPassword) {
+//     return null
+//   }
+//   if (showPassword) {
+//     return <EyeOffIcon className={s.eyeIcon} />
+//   }
+//
+//   return <EyeIcon className={s.eyeIcon} />
+// }
