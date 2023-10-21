@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, ElementRef, useState } from 'react'
+import React, { ComponentPropsWithoutRef, ElementRef } from 'react'
 
 import { ArrowIcon } from '@/assets/iconComponents/arrow'
 import { Typography, TypographyProps } from '@/components/ui/typography'
@@ -37,8 +37,6 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
       title,
       ...rest
     } = props
-    const [open, setOpen] = useState(false)
-    const onOpenHandler = (e: ((prevState: boolean) => boolean) | boolean) => setOpen(e)
 
     return (
       <div>
@@ -47,11 +45,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
             <Typography variant={'body2'}>{title}</Typography>
           </div>
         )}
-        <SelectPrimitive.Root
-          defaultValue={options[0].value}
-          onOpenChange={onOpenHandler}
-          {...rest}
-        >
+        <SelectPrimitive.Root defaultValue={options[0].value} {...rest}>
           <SelectPrimitive.Trigger
             aria-label={'Select-box'}
             className={clsx(s.border, s.select, s.trigger)}
@@ -60,7 +54,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
           >
             <div className={s.container}>
               <SelectPrimitive.Value />
-              <ArrowIcon className={clsx(s.icon, open ? s.rotate : '')} disabled={rest.disabled} />
+              <ArrowIcon className={s.icon} disabled={rest.disabled} />
             </div>
           </SelectPrimitive.Trigger>
           <SelectPrimitive.Portal {...rest}>

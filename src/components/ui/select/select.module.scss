@@ -49,6 +49,12 @@
     color: var(--color-dark-300);
   }
 
+  &[data-state='open'] {
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+
   .container {
     display: flex;
     flex-direction: row;
