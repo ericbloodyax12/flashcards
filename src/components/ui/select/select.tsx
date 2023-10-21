@@ -10,17 +10,21 @@ import s from './select.module.scss'
 export const SelectItem = React.forwardRef<
   ElementRef<typeof SelectPrimitive.Item>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ children, className, ...props }, ref) => {
+>(({ children, className, ...rest }, ref) => {
   return (
-    <SelectPrimitive.Item className={clsx(s.select, s.item, className)} {...props} ref={ref}>
+    <SelectPrimitive.Item className={clsx(s.select, s.item, className)} {...rest} ref={ref}>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>
   )
 })
+type Option = {
+  label: string
+  value: string
+}
 type SelectRadix = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
-  items: string[]
+  options: Option[]
   title?: string
 }
 export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, SelectRadix>(
@@ -29,7 +33,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
       children = undefined,
       errorMessage,
       fontVariant = 'body1',
-      items,
+      options,
       title,
       ...rest
     } = props
@@ -43,7 +47,11 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
             <Typography variant={'body2'}>{title}</Typography>
           </div>
         )}
-        <SelectPrimitive.Root defaultValue={items[0]} onOpenChange={onOpenHandler} {...rest}>
+        <SelectPrimitive.Root
+          defaultValue={options[0].value}
+          onOpenChange={onOpenHandler}
+          {...rest}
+        >
           <SelectPrimitive.Trigger
             aria-label={'Select-box'}
             className={clsx(s.border, s.select, s.trigger)}
@@ -59,9 +67,9 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
             <SelectPrimitive.Content className={s.border} {...rest}>
               {children
                 ? children
-                : items.map(item => (
-                    <SelectItem key={item} value={item}>
-                      <Typography variant={fontVariant}>{item}</Typography>
+                : options.map(option => (
+                    <SelectItem key={option.value} value={option.value}>
+                      <Typography variant={fontVariant}>{option.label}</Typography>
                     </SelectItem>
                   ))}
             </SelectPrimitive.Content>

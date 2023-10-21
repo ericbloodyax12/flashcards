@@ -15,7 +15,11 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
   args: {
     disabled: false,
-    items: ['Select-box1', 'Select-box2', 'Select-box3'],
+    options: [
+      { label: 'Select-box1', value: 'Select-box1' },
+      { label: 'Select-box2', value: 'Select-box2' },
+      { label: 'Select-box3', value: 'Select-box3' },
+    ],
     title: 'Select-box',
   },
 }
