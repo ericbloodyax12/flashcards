@@ -1,4 +1,11 @@
-import React, { ComponentPropsWithoutRef, ElementType, forwardRef } from 'react'
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  ElementType,
+  ForwardedRef,
+  ReactNode,
+  forwardRef,
+} from 'react'
 
 import s from './card.module.scss'
 
@@ -10,10 +17,16 @@ export type CardProps<T extends ElementType = 'div'> = {
 export const Card = forwardRef(
   <T extends ElementType = 'div'>(
     props: CardProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof CardProps<T>>,
-    ref: React.ForwardedRef<HTMLDivElement> | undefined
+    ref: ElementRef<T>
   ) => {
     const { as: Component = 'div', className, ...rest } = props
 
-    return <Component className={`${s.card} ${className}`} ref={ref} {...rest} />
+    return (
+      // @ts-expect-error todo: not sure how to type it
+      <Component className={`${s.card} ${className}`} ref={ref} {...rest} />
+    )
   }
-)
+) as <T extends ElementType = 'div'>(
+  props: CardProps<T> &
+    Omit<ComponentPropsWithoutRef<T>, keyof CardProps<T>> & { ref?: ForwardedRef<ElementRef<T>> }
+) => ReactNode
