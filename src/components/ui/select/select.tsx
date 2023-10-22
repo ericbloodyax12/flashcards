@@ -24,13 +24,14 @@ type Option = {
 type SelectRadix = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
-  options: Option[]
+  options?: Option[]
   title?: string
 }
 export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, SelectRadix>(
   (props: SelectRadix, ref) => {
     const {
       children = undefined,
+      defaultValue,
       errorMessage,
       fontVariant = 'body1',
       options,
@@ -45,7 +46,10 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
             <Typography variant={'body2'}>{title}</Typography>
           </div>
         )}
-        <SelectPrimitive.Root defaultValue={options[0].value} {...rest}>
+        <SelectPrimitive.Root
+          defaultValue={defaultValue ?? (options ? options[0].value : '')}
+          {...rest}
+        >
           <SelectPrimitive.Trigger
             aria-label={'Select-box'}
             className={clsx(s.border, s.select, s.trigger)}
@@ -59,13 +63,14 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
           </SelectPrimitive.Trigger>
           <SelectPrimitive.Portal {...rest}>
             <SelectPrimitive.Content className={s.border} {...rest}>
-              {children
-                ? children
-                : options.map(option => (
-                    <SelectItem key={option.value} value={option.value}>
-                      <Typography variant={fontVariant}>{option.label}</Typography>
-                    </SelectItem>
-                  ))}
+              {children ??
+                (options
+                  ? options.map(option => (
+                      <SelectItem key={option.value} value={option.value}>
+                        <Typography variant={fontVariant}>{option.label}</Typography>
+                      </SelectItem>
+                    ))
+                  : '')}
             </SelectPrimitive.Content>
           </SelectPrimitive.Portal>
         </SelectPrimitive.Root>
