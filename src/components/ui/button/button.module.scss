@@ -2,15 +2,26 @@
   all: unset;
 
   cursor: pointer;
+  user-select: none;
 
   display: inline-flex;
+  flex-shrink: 0;
   gap: 10px;
   align-items: center;
   justify-content: center;
 
+  box-sizing: border-box;
   padding: 6px 28px;
 
+  text-decoration: none;
+
+  background-color: transparent;
+  border: none;
   border-radius: 4px;
+
+  &:focus {
+    outline: 2px solid var(--color-info-700);
+  }
 }
 
 .primary {
@@ -18,20 +29,15 @@
   background-color: var(--color-accent-500);
   box-shadow: 0 4px 18px 0 rgb(140 97 255 / 35%);
 
-  &:active {
+  &:active:enabled {
     background-color: var(--color-accent-700);
   }
 
-  &:hover {
+  &:hover:enabled {
     background-color: var(--color-accent-300);
   }
 
-  &:focus {
-    background-color: var(--color-accent-500);
-    border: 1px solid var(--color-info-700);
-  }
-
-  &:disabled {
+  &_disabled {
     color: var(--color-light-900);
     background-color: var(--color-accent-900);
   }
@@ -42,22 +48,16 @@
   background-color: var(--color-dark-300);
   box-shadow: 0 2px 10px 0 rgb(109 109 109 / 25%);
 
-  &:active {
+  &:active:enabled {
     background-color: var(--color-dark-500);
   }
 
-  &:hover {
+  &:hover:enabled {
     background-color: var(--color-dark-100);
   }
 
-  &:focus {
-    background-color: var(--color-dark-300);
-    border: 1px solid var(--color-info-700);
-  }
-
-  &:disabled {
+  &_disabled {
     color: var(--color-light-900);
-    background-color: var(--color-dark-300);
   }
 }
 
@@ -65,22 +65,21 @@
   color: var(--color-accent-500);
   border: 1px var(--color-accent-500) solid;
 
-  &:active {
+  &:focus {
+    background-color: var(--color-dark-900);
+  }
+
+  &:active:enabled {
     background-color: var(--color-accent-900);
     border-color: var(--color-accent-700);
   }
 
-  &:hover {
+  &:hover:enabled {
     background-color: var(--color-dark-500);
     border-color: var(--color-accent-700);
   }
 
-  &:focus {
-    background-color: var(--color-dark-900);
-    border: 1px var(--color-info-700) solid;
-  }
-
-  &:disabled {
+  &_disabled {
     color: var(--color-accent-900);
     border-color: var(--color-accent-900);
   }
@@ -89,25 +88,27 @@
 .link {
   color: var(--color-accent-500);
 
-  &:active {
-    color: var(--color-accent-700);
-  }
-
-  &:hover {
-    color: var(--color-accent-300);
-  }
-
   &:focus {
-    color: var(--color-accent-500);
-    border: 1px solid var(--color-info-700);
     border-radius: 24px;
   }
 
-  &:disabled {
+  &:active:enabled {
+    color: var(--color-accent-700);
+  }
+
+  &:hover:enabled {
+    color: var(--color-accent-300);
+  }
+
+  &_disabled {
     color: var(--color-accent-900);
   }
 }
 
 .fullWidth {
   width: 100%;
+}
+
+.disabled {
+  cursor: default;
 }

@@ -7,6 +7,7 @@ import { Button } from './'
 
 const meta = {
   argTypes: {
+    disabled: { control: 'boolean' },
     fullWidth: {
       control: {
         type: 'boolean',
@@ -18,6 +19,7 @@ const meta = {
     },
   },
   component: Button,
+
   tags: ['autodocs'],
   title: 'Components/Button',
 } satisfies Meta<typeof Button>
