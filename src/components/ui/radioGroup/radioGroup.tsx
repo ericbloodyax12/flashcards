@@ -32,26 +32,38 @@ type Option = {
 type RadioGroupRadix = ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> & {
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
-  options: Option[]
+  options?: Option[]
 }
 export const RadioGroup = React.forwardRef<
   ElementRef<typeof RadioGroupPrimitive.Root>,
   RadioGroupRadix
 >((props: RadioGroupRadix, ref) => {
-  const { children = undefined, errorMessage, fontVariant = 'body2', options, ...rest } = props
+  const {
+    children = undefined,
+    defaultValue,
+    errorMessage,
+    fontVariant = 'body2',
+    options,
+    ...rest
+  } = props
 
   return (
-    <RadioGroupRoot defaultValue={options[0].value} {...rest} ref={ref}>
-      {children
-        ? children
-        : options.map(option => (
-            <div className={s.label} key={option.value}>
-              <RadioGroupItem id={option.value} value={option.value} />
-              <Typography as={'label'} htmlFor={option.value} variant={fontVariant}>
-                {option.label}
-              </Typography>
-            </div>
-          ))}
+    <RadioGroupRoot
+      defaultValue={defaultValue ?? (options ? options[0].value : '')}
+      {...rest}
+      ref={ref}
+    >
+      {children ??
+        (options
+          ? options.map(option => (
+              <div className={s.label} key={option.value}>
+                <RadioGroupItem id={option.value} value={option.value} />
+                <Typography as={'label'} htmlFor={option.value} variant={fontVariant}>
+                  {option.label}
+                </Typography>
+              </div>
+            ))
+          : '')}
     </RadioGroupRoot>
   )
 })
