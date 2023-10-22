@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, useEffect } from 'react'
 
-import { Typography } from '@/components/ui/typography'
+import { Typography, TypographyProps } from '@/components/ui/typography'
 import * as SliderPrimitive from '@radix-ui/react-slider'
 import { clsx } from 'clsx'
 
@@ -8,9 +8,10 @@ import s from './slider.module.scss'
 export const Slider = forwardRef<
   ElementRef<typeof SliderPrimitive.Root>,
   Omit<ComponentPropsWithoutRef<typeof SliderPrimitive.Root>, 'value'> & {
+    fontVariant?: TypographyProps['variant']
     value?: number[] | undefined
   }
->(({ className, max, onValueChange, value, ...props }, ref) => {
+>(({ className, fontVariant = 'body1', max, onValueChange, value, ...props }, ref) => {
   useEffect(() => {
     if (value?.[1] === undefined || value?.[1] === null) {
       onValueChange?.([value?.[0] ?? 0, max ?? 0])
@@ -20,7 +21,7 @@ export const Slider = forwardRef<
   return (
     <div className={s.container}>
       <span className={s.value}>
-        <Typography variant={'body1'}>{value?.[0]}</Typography>
+        <Typography variant={fontVariant}>{value?.[0]}</Typography>
       </span>
       <SliderPrimitive.Slider
         className={clsx(s.root, className)}
@@ -36,7 +37,7 @@ export const Slider = forwardRef<
         {value?.map((_, i) => <SliderPrimitive.Thumb className={s.thumb} key={i} />)}
       </SliderPrimitive.Slider>
       <span className={s.value}>
-        <Typography variant={'body1'}>{value?.[1]}</Typography>
+        <Typography variant={fontVariant}>{value?.[1]}</Typography>
       </span>
     </div>
   )
