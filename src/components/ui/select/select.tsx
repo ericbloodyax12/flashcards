@@ -22,6 +22,7 @@ type Option = {
   value: string
 }
 type SelectRadix = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
+  className: string | undefined
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
   options?: Option[]
@@ -31,6 +32,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
   (props: SelectRadix, ref) => {
     const {
       children = undefined,
+      className,
       defaultValue,
       errorMessage,
       fontVariant = 'body1',
@@ -38,6 +40,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
       title,
       ...rest
     } = props
+    const trigger = clsx(s.border, s.select, s.trigger, className)
 
     return (
       <div>
@@ -52,7 +55,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, 
         >
           <SelectPrimitive.Trigger
             aria-label={'Select-box'}
-            className={clsx(s.border, s.select, s.trigger)}
+            className={trigger}
             ref={ref}
             {...rest}
           >
