@@ -21,7 +21,7 @@ const meta = {
 
 export default meta
 
-export const AvatarMenu = () => {
+export const AvatarWithMenu = () => {
   const options: Option[] = [
     {
       icon: <Avatar src={ellipse} />,
@@ -46,7 +46,7 @@ export const AvatarMenu = () => {
 
   return <DropDown icon={<Avatar src={ellipse} />} options={options} />
 }
-export const CardMenu = () => {
+export const CardWithMenu = () => {
   const options: Option[] = [
     {
       icon: <PlayIcon />,
