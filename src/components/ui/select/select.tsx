@@ -17,6 +17,7 @@ export const SelectItem = React.forwardRef<
     </SelectPrimitive.Item>
   )
 })
+
 type Option = {
   label: string
   value: string
@@ -28,7 +29,7 @@ type SelectRadix = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
   options?: Option[]
   title?: string
 }
-export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, SelectRadix>(
+export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger>, SelectRadix>(
   (props: SelectRadix, ref) => {
     const {
       children = undefined,
