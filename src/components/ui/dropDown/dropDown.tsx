@@ -5,11 +5,16 @@ import { clsx } from 'clsx'
 
 import s from './dropDown.module.scss'
 
+export type Option = {
+  icon: ReactNode
+  jsx: ReactNode
+}
+
 type DropDownRadix = ComponentPropsWithoutRef<typeof DropDownMenu.Root> & {
   className?: string
   errorMessage?: string
   icon: ReactNode
-  options?: ReactNode[]
+  options?: Option[]
 }
 
 export const DropDownItem = React.forwardRef<
@@ -46,13 +51,16 @@ export const DropDown = React.forwardRef<ElementRef<typeof DropDownMenu.Trigger>
             {icon}
           </DropDownMenu.Trigger>
           <DropDownMenu.Portal>
-            <DropDownMenu.Content sideOffset={5} {...rest}>
+            <DropDownMenu.Content sideOffset={4} {...rest}>
               <div className={s.content}>
                 {children ??
                   (options
                     ? options.map((option, i) => (
                         <>
-                          <div key={i}>{option}</div>
+                          <DropDownItem key={i}>
+                            {option.icon}
+                            {option.jsx}
+                          </DropDownItem>
                           {i < options.length - 1 && <DropDownSeparator />}
                         </>
                       ))

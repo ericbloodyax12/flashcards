@@ -1,7 +1,5 @@
 import type { Meta } from '@storybook/react'
 
-import React from 'react'
-
 import { EditIcon } from '@/assets/icons/edit'
 import { LogoutIcon } from '@/assets/icons/logout'
 import { PersonIcon } from '@/assets/icons/person'
@@ -13,7 +11,7 @@ import { Typography } from '@/components/ui/typography'
 
 import s from './dropDown.module.scss'
 
-import { DropDown, DropDownItem } from './'
+import { DropDown, Option } from './'
 
 const meta = {
   component: DropDown,
@@ -24,51 +22,45 @@ const meta = {
 export default meta
 
 export const AvatarMenu = () => {
-  const options: React.ReactNode[] = []
-
-  options.push(
-    <DropDownItem>
-      <Avatar src={ellipse} />
-      <div className={s.column}>
-        <Typography variant={'subtitle2'}>Ivan</Typography>
-        <Typography className={s.mail} variant={'caption'}>
-          j&johnson@gmail.com
-        </Typography>
-      </div>
-    </DropDownItem>
-  )
-  options.push(
-    <DropDownItem>
-      <PersonIcon /> <Typography variant={'caption'}>My profile</Typography>
-    </DropDownItem>
-  )
-
-  options.push(
-    <DropDownItem>
-      <LogoutIcon /> <Typography variant={'caption'}>Sign Out</Typography>
-    </DropDownItem>
-  )
+  const options: Option[] = [
+    {
+      icon: <Avatar src={ellipse} />,
+      jsx: (
+        <div className={s.column}>
+          <Typography variant={'subtitle2'}>Ivan</Typography>
+          <Typography className={s.mail} variant={'caption'}>
+            j&johnson@gmail.com
+          </Typography>
+        </div>
+      ),
+    },
+    {
+      icon: <PersonIcon />,
+      jsx: <Typography variant={'caption'}>My profile</Typography>,
+    },
+    {
+      icon: <LogoutIcon />,
+      jsx: <Typography variant={'caption'}>Sign Out</Typography>,
+    },
+  ]
 
   return <DropDown icon={<Avatar src={ellipse} />} options={options} />
 }
 export const CardMenu = () => {
-  const options: React.ReactNode[] = []
-
-  options.push(
-    <DropDownItem>
-      <PlayIcon /> <Typography variant={'caption'}>Learn</Typography>
-    </DropDownItem>
-  )
-  options.push(
-    <DropDownItem>
-      <EditIcon /> <Typography variant={'caption'}>Edit</Typography>
-    </DropDownItem>
-  )
-  options.push(
-    <DropDownItem>
-      <TrashIcon /> <Typography variant={'caption'}>Delete</Typography>
-    </DropDownItem>
-  )
+  const options: Option[] = [
+    {
+      icon: <PlayIcon />,
+      jsx: <Typography variant={'caption'}>Learn</Typography>,
+    },
+    {
+      icon: <EditIcon />,
+      jsx: <Typography variant={'caption'}>Edit</Typography>,
+    },
+    {
+      icon: <TrashIcon />,
+      jsx: <Typography variant={'caption'}>Delete</Typography>,
+    },
+  ]
 
   return (
     <>
