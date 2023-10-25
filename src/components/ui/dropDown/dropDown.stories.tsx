@@ -13,7 +13,7 @@ import { Typography } from '@/components/ui/typography'
 
 import s from './dropDown.module.scss'
 
-import { DropDown } from './'
+import { DropDown, DropDownItem } from './'
 
 const meta = {
   component: DropDown,
@@ -23,11 +23,11 @@ const meta = {
 
 export default meta
 
-export const AvatarWithMenu = () => {
+export const AvatarMenu = () => {
   const options: React.ReactNode[] = []
 
   options.push(
-    <div className={s.item}>
+    <DropDownItem>
       <Avatar src={ellipse} />
       <div className={s.column}>
         <Typography variant={'subtitle2'}>Ivan</Typography>
@@ -35,39 +35,39 @@ export const AvatarWithMenu = () => {
           j&johnson@gmail.com
         </Typography>
       </div>
-    </div>
+    </DropDownItem>
   )
   options.push(
-    <div className={s.item}>
+    <DropDownItem>
       <PersonIcon /> <Typography variant={'caption'}>My profile</Typography>
-    </div>
+    </DropDownItem>
   )
 
   options.push(
-    <div className={s.item}>
+    <DropDownItem>
       <LogoutIcon /> <Typography variant={'caption'}>Sign Out</Typography>
-    </div>
+    </DropDownItem>
   )
 
   return <DropDown icon={<Avatar src={ellipse} />} options={options} />
 }
-export const CardWithMenu = () => {
+export const CardMenu = () => {
   const options: React.ReactNode[] = []
 
   options.push(
-    <div className={s.item}>
+    <DropDownItem>
       <PlayIcon /> <Typography variant={'caption'}>Learn</Typography>
-    </div>
+    </DropDownItem>
   )
   options.push(
-    <div className={s.item}>
+    <DropDownItem>
       <EditIcon /> <Typography variant={'caption'}>Edit</Typography>
-    </div>
+    </DropDownItem>
   )
   options.push(
-    <div className={s.item}>
+    <DropDownItem>
       <TrashIcon /> <Typography variant={'caption'}>Delete</Typography>
-    </div>
+    </DropDownItem>
   )
 
   return (
