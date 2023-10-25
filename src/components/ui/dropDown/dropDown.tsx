@@ -11,7 +11,7 @@ type DropDownRadix = ComponentPropsWithoutRef<typeof DropdownMenu.Root> & {
   icon: ReactNode
   options?: ReactNode[]
 }
-export const DropDown = React.forwardRef<ElementRef<typeof DropdownMenu.Root>, DropDownRadix>(
+export const DropDown = React.forwardRef<ElementRef<typeof DropdownMenu.Trigger>, DropDownRadix>(
   (props: DropDownRadix, ref) => {
     const { children = undefined, className, errorMessage, icon, options, ...rest } = props
     const trigger = clsx(s.dropDown, s.trigger, className)
