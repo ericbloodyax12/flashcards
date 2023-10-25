@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef, ElementRef } from 'react'
 
-import { ArrowIcon } from '@/assets/iconComponents/arrow'
+import { ArrowIcon } from '@/assets/icons/arrow'
 import { Typography, TypographyProps } from '@/components/ui/typography'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { clsx } from 'clsx'

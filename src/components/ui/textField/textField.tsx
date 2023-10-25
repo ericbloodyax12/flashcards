@@ -1,8 +1,8 @@
 import { ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
-import { EyeIcon } from '@/assets/iconComponents/eye'
-import { EyeOffIcon } from '@/assets/iconComponents/eyeoff'
-import { SearchIcon } from '@/assets/iconComponents/search'
+import { EyeIcon } from '@/assets/icons/eye'
+import { EyeOffIcon } from '@/assets/icons/eyeoff'
+import { SearchIcon } from '@/assets/icons/search'
 import { Typography } from '@/components/ui/typography'
 import { clsx } from 'clsx'
 
