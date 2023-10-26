@@ -1,25 +1,47 @@
 import React, { ComponentPropsWithoutRef, ElementRef, ReactNode } from 'react'
 
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import * as DropDownMenu from '@radix-ui/react-dropdown-menu'
 import { clsx } from 'clsx'
 
 import s from './dropDown.module.scss'
 
-type DropDownRadix = ComponentPropsWithoutRef<typeof DropdownMenu.Root> & {
+export type Option = {
+  icon: ReactNode
+  jsx: ReactNode
+}
+
+type DropDownRadix = ComponentPropsWithoutRef<typeof DropDownMenu.Root> & {
   className?: string
   errorMessage?: string
   icon: ReactNode
-  options?: ReactNode[]
+  options?: Option[]
 }
-export const DropDown = React.forwardRef<ElementRef<typeof DropdownMenu.Trigger>, DropDownRadix>(
+
+export const DropDownItem = React.forwardRef<
+  ElementRef<typeof DropDownMenu.Item>,
+  ComponentPropsWithoutRef<typeof DropDownMenu.Item>
+>(({ children, className, ...props }, ref) => {
+  return (
+    <DropDownMenu.Item className={clsx(s.item, className)} {...props} ref={ref}>
+      {children}
+    </DropDownMenu.Item>
+  )
+})
+
+export const DropDownSeparator: React.FC<
+  ComponentPropsWithoutRef<typeof DropDownMenu.Separator>
+> = (className?, ...rest) => (
+  <DropDownMenu.Separator className={clsx(s.separator, className)} {...rest} />
+)
+export const DropDown = React.forwardRef<ElementRef<typeof DropDownMenu.Trigger>, DropDownRadix>(
   (props: DropDownRadix, ref) => {
     const { children = undefined, className, errorMessage, icon, options, ...rest } = props
     const trigger = clsx(s.dropDown, s.trigger, className)
 
     return (
       <div className={s.dropDown}>
-        <DropdownMenu.Root {...rest}>
-          <DropdownMenu.Trigger
+        <DropDownMenu.Root {...rest}>
+          <DropDownMenu.Trigger
             aria-label={'Drop-down'}
             asChild
             className={trigger}
@@ -27,28 +49,27 @@ export const DropDown = React.forwardRef<ElementRef<typeof DropdownMenu.Trigger>
             {...rest}
           >
             {icon}
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Portal>
-            <DropdownMenu.Content sideOffset={5} {...rest}>
+          </DropDownMenu.Trigger>
+          <DropDownMenu.Portal>
+            <DropDownMenu.Content sideOffset={4} {...rest}>
               <div className={s.content}>
                 {children ??
                   (options
                     ? options.map((option, i) => (
                         <>
-                          <DropdownMenu.Item className={s.option} key={i}>
-                            {option}
-                          </DropdownMenu.Item>
-                          {i < options.length - 1 && (
-                            <DropdownMenu.Separator className={s.separator} />
-                          )}
+                          <DropDownItem key={i}>
+                            {option.icon}
+                            {option.jsx}
+                          </DropDownItem>
+                          {i < options.length - 1 && <DropDownSeparator />}
                         </>
                       ))
                     : '')}
-                <DropdownMenu.Arrow className={s.arrow} />
+                <DropDownMenu.Arrow className={s.arrow} />
               </div>
-            </DropdownMenu.Content>
-          </DropdownMenu.Portal>
-        </DropdownMenu.Root>
+            </DropDownMenu.Content>
+          </DropDownMenu.Portal>
+        </DropDownMenu.Root>
       </div>
     )
   }
