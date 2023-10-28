@@ -13,5 +13,12 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const TemplateTabSwitcher: Story = {
-  args: {},
+  args: {
+    tabs: [
+      { title: 'TabSwitcher1' },
+      { title: 'TabSwitcher2' },
+      { title: 'TabSwitcher3' },
+      { title: 'TabSwitcher4' },
+    ],
+  },
 }
