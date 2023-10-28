@@ -12,24 +12,15 @@ export type InputProps = {
   errorMessage?: string
   fullWidth?: boolean
   label?: string
-  myClassName?: string | undefined
   search?: boolean
   variant?: 'default' | 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const {
-    errorMessage,
-    fullWidth,
-    label,
-    myClassName,
-    search,
-    variant = 'default',
-    ...rest
-  } = props
-  const [showPassword, setShowPassword] = useState(false)
+  const { className, errorMessage, fullWidth, label, search, variant = 'default', ...rest } = props
+  const [isShowPassword, setIsShowPassword] = useState(false)
   // const isPassword = type === 'password'
-  // const iconToRender = getIcon(isPassword, showPassword)
+  // const iconToRender = getIcon(isPassword, isShowPassword)
 
   // const handleShowPasswordClicked = () => {
   //   setShowPassword(value => !value)
@@ -38,7 +29,7 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) =
   const inputClassName = clsx(
     s.input,
     s[variant],
-    myClassName,
+    className,
     fullWidth && s.fullWidth,
     errorMessage && s.error
   )
@@ -49,15 +40,20 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) =
         {label}
       </Typography>
       {variant === 'search' && <SearchIcon className={s.icon} />}
-      <input className={inputClassName} type={variant} {...rest} ref={ref} />
+      <input
+        className={inputClassName}
+        type={isShowPassword ? 'text' : variant}
+        {...rest}
+        ref={ref}
+      />
 
       <button
+        className={s.iconbutton} // inputContainer--icon-button
         onClick={() => {
-          setShowPassword(value => !value)
+          setIsShowPassword(value => !value)
         }}
-        style={{ all: 'unset', backgroundColor: 'transparent' }}
       >
-        {showPassword
+        {isShowPassword
           ? variant === 'password' && <EyeOffIcon className={s.eyeIcon} />
           : variant === 'password' && <EyeIcon className={s.eyeIcon} />}
       </button>

@@ -7,13 +7,14 @@
   margin: 40px;
 }
 
-.default {
-  @include common-styles-input;
+.iconbutton {
+  all: unset;
+  cursor: pointer;
+  background-color: transparent;
 }
 
-button {
-  all: unset;
-  background-color: transparent;
+.default {
+  @include common-styles-input;
 }
 
 .password {
