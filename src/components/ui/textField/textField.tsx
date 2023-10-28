@@ -12,12 +12,21 @@ export type InputProps = {
   errorMessage?: string
   fullWidth?: boolean
   label?: string
+  myClassName?: string | undefined
   search?: boolean
   variant?: 'default' | 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { className, errorMessage, fullWidth, label, search, variant = 'default', ...rest } = props
+  const {
+    errorMessage,
+    fullWidth,
+    label,
+    myClassName,
+    search,
+    variant = 'default',
+    ...rest
+  } = props
   const [showPassword, setShowPassword] = useState(false)
   // const isPassword = type === 'password'
   // const iconToRender = getIcon(isPassword, showPassword)
@@ -29,7 +38,7 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) =
   const inputClassName = clsx(
     s.input,
     s[variant],
-    className,
+    myClassName,
     fullWidth && s.fullWidth,
     errorMessage && s.error
   )
