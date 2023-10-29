@@ -1,17 +1,12 @@
-.container {
-  display: flex;
-  align-items: center;
-  background-color: var(--color-dark-900);
+.background {
+  padding: 8px;
+  vertical-align: center;
+  border-radius: 50%;
+  transition: var(--transition-duration-basic) background-color;
 }
 
-.label {
-  cursor: pointer;
-  padding-right: 10px;
-
-  &.disabled {
-    cursor: initial;
-    color: var(--color-dark-100);
-  }
+.checkBlank {
+  border: 2px solid;
 }
 
 .checkbox {
@@ -19,31 +14,82 @@
   align-items: center;
   justify-content: center;
 
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 
-  border: 3px solid var(--color-light-900);
-  border-radius: 4px;
+  background-color: transparent;
+  border-radius: 2px;
 
-  &:disabled {
+  transition: var(--transition-duration-basic) background-color;
+}
+
+.container {
+  all: unset;
+
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  align-items: center;
+  justify-content: flex-start;
+
+  background-color: transparent;
+  border: none;
+
+  &[data-disabled] {
     cursor: auto;
 
-    &::before,
-    &::after {
-      transform: translate(-50%, -50%) scale(0);
-      background-color: transparent;
+    .checkBlank {
+      cursor: auto;
+      border-color: var(--color-dark-100);
     }
 
-    .indicator {
-      fill: var(--color-dark-100);
+    &[data-state='checked'] {
+      .checkbox {
+        background-color: var(--color-light-700);
+      }
+    }
+  }
+
+  &:not([data-disabled]) {
+    &:hover {
+      .background {
+        background-color: var(--color-dark-500);
+
+        .checkBlank {
+          background-color: var(--color-dark-500);
+        }
+      }
+    }
+
+    &:active,
+    &:focus-visible {
+      .background {
+        background-color: var(--color-dark-100);
+
+        .checkBlank {
+          background-color: var(--color-dark-100);
+        }
+      }
     }
   }
 }
 
-.checked {
-  border-color: transparent;
+.label {
+  color: var(--color-light-100);
+}
 
-  .indicator {
-    opacity: 1;
-  }
+.disabled {
+  color: var(--color-dark-100);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.position {
+  margin-left: -8px;
 }
