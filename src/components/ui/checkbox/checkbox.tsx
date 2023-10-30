@@ -10,10 +10,10 @@ import s from './checkbox.module.scss'
 export type Props = {
   classname?: string
   label?: string
-  position?: 'left'
+  position?: 'left' | 'right'
 } & ComponentPropsWithoutRef<typeof RadixCheckbox.Root>
 export const Checkbox = forwardRef<ElementRef<typeof RadixCheckbox.Root>, Props>(
-  ({ checked, classname, disabled, label, position, ...rest }, ref) => {
+  ({ checked, classname, disabled, label, position = 'left', ...rest }, ref) => {
     const classes = {
       checkBlank: clsx(s.checkbox, s.checkBlank),
       icon: clsx(s.icon, s.background),
