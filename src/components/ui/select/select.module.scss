@@ -14,9 +14,12 @@
   padding: 6px 12px;
 
   color: var(--color-light-100);
+  transition: var(--transition-duration-basic) color;
 }
 
 .item {
+  background-color: var(--color-dark-900);
+  transition: var(--transition-duration-basic) background-color;
   &:hover {
     color: var(--color-accent-300);
     background-color: var(--color-accent-900);
@@ -37,6 +40,8 @@
 }
 
 .trigger {
+  background-color: var(--color-dark-900);
+  transition: var(--transition-duration-basic) background-color, var(--transition-duration-basic) color;
   &:disabled {
     cursor: default;
     color: var(--color-dark-300);

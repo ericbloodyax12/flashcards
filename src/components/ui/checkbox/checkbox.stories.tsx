@@ -21,13 +21,13 @@ type Story = StoryObj<typeof meta>
 export const CheckboxDefault: Story = {
   args: {
     disabled: false,
-    label: 'Click here',
+    label: 'Check-box',
   },
   render: args => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [checked, setChecked] = useState(false)
     const onChangeChecked = () => setChecked(!checked)
 
-    return <Checkbox {...args} checked={checked} onChange={onChangeChecked} />
+    return <Checkbox {...args} checked={checked} onCheckedChange={onChangeChecked} />
   },
 }
