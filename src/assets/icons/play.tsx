@@ -32,4 +32,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
 
 const ForwardRef = forwardRef(SvgComponent)
 
-export const PlayIcon = memo(ForwardRef)
+export default memo(ForwardRef)
