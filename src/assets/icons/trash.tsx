@@ -26,4 +26,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
 
 const ForwardRef = forwardRef(SvgComponent)
 
-export const TrashIcon = memo(ForwardRef)
+export default memo(ForwardRef)

@@ -28,4 +28,4 @@ const SvgComponent = (
 )
 const ForwardRef = forwardRef(SvgComponent)
 
-export const ArrowIcon = memo(ForwardRef)
+export default memo(ForwardRef)

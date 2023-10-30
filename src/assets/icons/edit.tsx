@@ -32,4 +32,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) =
 )
 const ForwardRef = forwardRef(SvgComponent)
 
-export const EditIcon = memo(ForwardRef)
+export default memo(ForwardRef)

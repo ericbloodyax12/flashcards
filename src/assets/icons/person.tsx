@@ -25,4 +25,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
 
 const ForwardRef = forwardRef(SvgComponent)
 
-export const PersonIcon = memo(ForwardRef)
+export default memo(ForwardRef)
