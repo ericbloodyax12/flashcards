@@ -18,7 +18,7 @@
   background-color: transparent;
   border: none;
   border-radius: 4px;
-
+  transition: var(--transition-duration-basic) background-color;
   &:focus {
     outline: 2px solid var(--color-info-700);
   }
