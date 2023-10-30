@@ -7,12 +7,12 @@ import { clsx } from 'clsx'
 
 import s from './checkbox.module.scss'
 
-export type Props = {
+export type CheckboxProps = {
   classname?: string
   label?: string
   position?: 'left' | 'right'
 } & ComponentPropsWithoutRef<typeof RadixCheckbox.Root>
-export const Checkbox = forwardRef<ElementRef<typeof RadixCheckbox.Root>, Props>(
+export const Checkbox = forwardRef<ElementRef<typeof RadixCheckbox.Root>, CheckboxProps>(
   ({ checked, classname, disabled, label, position = 'left', ...rest }, ref) => {
     const classes = {
       checkBlank: clsx(s.checkbox, s.checkBlank),
