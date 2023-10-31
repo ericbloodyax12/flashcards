@@ -11,8 +11,10 @@ export const SelectItem = React.forwardRef<
   ElementRef<typeof SelectPrimitive.Item>,
   ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
 >(({ children, className, ...props }, ref) => {
+  const item = clsx(s.select, s.item, className)
+
   return (
-    <SelectPrimitive.Item className={clsx(s.select, s.item, className)} {...props} ref={ref}>
+    <SelectPrimitive.Item className={item} {...props} ref={ref}>
       <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
     </SelectPrimitive.Item>
   )
@@ -24,8 +26,10 @@ type Option = {
 }
 type SelectRadix = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
   className?: string
+  classNameContent?: string
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
+  fullWidth?: boolean
   options?: Option[]
   title?: string
 }
@@ -37,48 +41,48 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
       defaultValue,
       errorMessage,
       fontVariant = 'body1',
+      fullWidth = false,
       options,
       title,
       ...rest
     } = props
-    const trigger = clsx(s.border, s.select, s.trigger, className)
+    const classes = {
+      content: clsx(s.border, s.content, className),
+      trigger: clsx(s.border, s.select, s.trigger, fullWidth || s.size, className),
+    }
 
     return (
-      <div>
+      <SelectPrimitive.Root
+        defaultValue={defaultValue ?? (options ? options[0].value : '')}
+        {...rest}
+      >
         {title && (
           <div className={s.title}>
             <Typography variant={'body2'}>{title}</Typography>
           </div>
         )}
-        <SelectPrimitive.Root
-          defaultValue={defaultValue ?? (options ? options[0].value : '')}
+        <SelectPrimitive.Trigger
+          aria-label={'Select-box'}
+          className={classes.trigger}
+          ref={ref}
           {...rest}
         >
-          <SelectPrimitive.Trigger
-            aria-label={'Select-box'}
-            className={trigger}
-            ref={ref}
-            {...rest}
-          >
-            <div className={s.container}>
-              <SelectPrimitive.Value />
-              <ArrowIcon className={s.icon} disabled={rest.disabled} />
-            </div>
-          </SelectPrimitive.Trigger>
-          <SelectPrimitive.Portal {...rest}>
-            <SelectPrimitive.Content className={s.border} {...rest}>
-              {children ??
-                (options
-                  ? options.map(option => (
-                      <SelectItem key={option.value} value={option.value}>
-                        <Typography variant={fontVariant}>{option.label}</Typography>
-                      </SelectItem>
-                    ))
-                  : '')}
-            </SelectPrimitive.Content>
-          </SelectPrimitive.Portal>
-        </SelectPrimitive.Root>
-      </div>
+          <div className={s.container}>
+            <SelectPrimitive.Value />
+            <ArrowIcon className={s.icon} disabled={rest.disabled} />
+          </div>
+        </SelectPrimitive.Trigger>
+        <SelectPrimitive.Content className={classes.content} position={'popper'} {...rest}>
+          {children ??
+            (options
+              ? options.map(option => (
+                  <SelectItem className={className} key={option.value} value={option.value}>
+                    <Typography variant={fontVariant}>{option.label}</Typography>
+                  </SelectItem>
+                ))
+              : '')}
+        </SelectPrimitive.Content>
+      </SelectPrimitive.Root>
     )
   }
 )
