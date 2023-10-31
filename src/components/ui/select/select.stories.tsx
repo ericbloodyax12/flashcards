@@ -37,6 +37,5 @@ export const Customized: Story = {
     ...args,
     className: s.customized,
     fontVariant: 'h3',
-    fullWidth: true,
   },
 }
