@@ -26,7 +26,6 @@ type Option = {
 }
 type SelectRadix = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
   className?: string
-  classNameContent?: string
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
   fullWidth?: boolean
