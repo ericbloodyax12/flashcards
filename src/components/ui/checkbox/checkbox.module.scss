@@ -64,7 +64,7 @@
     }
 
     &:active,
-    &:focus-visible {
+    &:focus {
       .background {
         background-color: var(--color-dark-100);
 
