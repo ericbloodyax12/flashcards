@@ -24,7 +24,7 @@ type Option = {
   label: string
   value: string
 }
-type SelectRadix = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
+export type SelectProps = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
   className?: string
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
@@ -32,8 +32,8 @@ type SelectRadix = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
   options?: Option[]
   title?: string
 }
-export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger>, SelectRadix>(
-  (props: SelectRadix, ref) => {
+export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger>, SelectProps>(
+  (props: SelectProps, ref) => {
     const {
       children = undefined,
       className,
