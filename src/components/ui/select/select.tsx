@@ -6,6 +6,7 @@ import * as SelectPrimitive from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 
 import s from './select.module.scss'
+import { ErrorMessage } from '@/components/ui/errorMessage'
 
 export const SelectItem = React.forwardRef<
   ElementRef<typeof SelectPrimitive.Item>,
@@ -81,6 +82,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
                 ))
               : '')}
         </SelectPrimitive.Content>
+        <ErrorMessage error={errorMessage} />
       </SelectPrimitive.Root>
     )
   }
