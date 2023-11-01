@@ -5,6 +5,7 @@ import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import { clsx } from 'clsx'
 
 import s from './radioGroup.module.scss'
+import { ErrorMessage } from '@/components/ui/errorMessage'
 
 const RadioGroupRoot = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
@@ -64,6 +65,7 @@ export const RadioGroup = React.forwardRef<
               </div>
             ))
           : '')}
+      <ErrorMessage error={errorMessage} />
     </RadioGroupRoot>
   )
 })
