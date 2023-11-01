@@ -3,9 +3,9 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Typography } from '@/components/ui/typography'
 import { clsx } from 'clsx'
 
-import s from './select.stories.module.scss'
-
 import { Select, SelectItem } from './'
+
+import s from './select.stories.module.scss'
 
 const meta = {
   component: Select,
