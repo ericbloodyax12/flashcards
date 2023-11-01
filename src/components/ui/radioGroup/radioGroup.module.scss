@@ -31,7 +31,7 @@
     content: '';
     position: absolute;
     border-radius: 50%;
-    transition: 100ms background-color;
+    transition: var(--transition-duration-basic) background-color;
 
     [data-state='checked'] & {
       width: 8px;

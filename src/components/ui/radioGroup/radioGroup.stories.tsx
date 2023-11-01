@@ -21,9 +21,9 @@ const args = {
   ],
 }
 
-export const WithDefaultValues: Story = {
-  args: { ...args, defaultValue: args.options[0].value },
-}
-export const WithoutDefaultValues: Story = {
+export const WithDefaultValue: Story = {
   args: args,
+}
+export const WithoutDefaultValue: Story = {
+  args: { ...args, variant: 'empty' },
 }

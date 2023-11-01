@@ -1,11 +1,11 @@
 import React, { ComponentPropsWithoutRef, ElementRef } from 'react'
 
+import { ErrorMessage } from '@/components/ui/errorMessage/errorMessage'
 import { Typography, TypographyProps } from '@/components/ui/typography'
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import { clsx } from 'clsx'
 
 import s from './radioGroup.module.scss'
-import { ErrorMessage } from '@/components/ui/errorMessage'
 
 const RadioGroupRoot = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
@@ -30,30 +30,30 @@ type Option = {
   label: string
   value: string
 }
-type RadioGroupRadix = ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> & {
+export type RadioGroupProps = ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> & {
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
   options?: Option[]
+  variant?: 'default' | 'empty'
 }
 export const RadioGroup = React.forwardRef<
   ElementRef<typeof RadioGroupPrimitive.Root>,
-  RadioGroupRadix
->((props: RadioGroupRadix, ref) => {
+  RadioGroupProps
+>((props: RadioGroupProps, ref) => {
   const {
     children = undefined,
     defaultValue,
     errorMessage,
     fontVariant = 'body2',
     options,
+    variant = 'default',
     ...rest
   } = props
+  const defaultOption =
+    options && options[0] && variant === 'default' ? options[0].value : undefined
 
   return (
-    <RadioGroupRoot
-      defaultValue={defaultValue ?? (options ? options[0].value : '')}
-      {...rest}
-      ref={ref}
-    >
+    <RadioGroupRoot defaultValue={defaultValue ?? defaultOption} {...rest} ref={ref}>
       {children ??
         (options
           ? options.map(option => (
