@@ -41,7 +41,6 @@
 }
 
 .trigger {
-  padding: 6px 12px;
   transition: var(--transition-duration-basic) background-color, color, outline;
 
   &:disabled {
@@ -100,4 +99,8 @@
 
 .size {
   width: 210px;
+}
+
+.zero {
+  margin: 0;
 }

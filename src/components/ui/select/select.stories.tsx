@@ -1,8 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { Typography } from '@/components/ui/typography'
+import { clsx } from 'clsx'
+
 import s from './select.stories.module.scss'
 
-import { Select } from './'
+import { Select, SelectItem } from './'
 
 const meta = {
   component: Select,
@@ -32,10 +35,18 @@ export const FullWidth: Story = {
   args: { ...args, fullWidth: true },
 }
 
-export const Customized: Story = {
-  args: {
-    ...args,
-    className: s.customized,
-    fontVariant: 'h3',
-  },
+export const Customized = () => {
+  const customized = clsx(s.customized, s.margin)
+
+  return (
+    <>
+      <Select className={customized} defaultValue={args.options[0].value}>
+        {args.options.map(option => (
+          <SelectItem className={s.customized} key={option.value} value={option.value}>
+            <Typography variant={'h2'}>{option.label}</Typography>
+          </SelectItem>
+        ))}
+      </Select>
+    </>
+  )
 }

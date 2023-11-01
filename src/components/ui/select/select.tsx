@@ -46,7 +46,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
       ...rest
     } = props
     const classes = {
-      content: clsx(s.border, s.content, className),
+      content: clsx(s.border, s.content),
       trigger: clsx(s.border, s.select, s.trigger, fullWidth || s.size, className),
     }
 
@@ -75,7 +75,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
           {children ??
             (options
               ? options.map(option => (
-                  <SelectItem className={className} key={option.value} value={option.value}>
+                  <SelectItem key={option.value} value={option.value}>
                     <Typography variant={fontVariant}>{option.label}</Typography>
                   </SelectItem>
                 ))
