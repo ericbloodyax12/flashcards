@@ -74,7 +74,7 @@ export const RadioGroup = React.forwardRef<
               </div>
             ))
           : '')}
-      <ErrorMessage error={errorMessage} />
+      <ErrorMessage error={errorMessage} position={position} />
     </RadioGroupRoot>
   )
 })
