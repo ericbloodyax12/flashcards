@@ -13,7 +13,7 @@ export type CheckboxProps = {
   position?: 'left' | 'right'
 } & ComponentPropsWithoutRef<typeof RadixCheckbox.Root>
 export const Checkbox = forwardRef<ElementRef<typeof RadixCheckbox.Root>, CheckboxProps>(
-  ({ checked, classname, disabled, label, position = 'left', ...rest }, ref) => {
+  ({ checked, classname, disabled, label, position = 'right', ...rest }, ref) => {
     const classes = {
       checkBlank: clsx(s.checkbox, s.checkBlank),
       icon: clsx(s.icon, s.background),

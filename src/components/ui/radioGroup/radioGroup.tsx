@@ -37,6 +37,7 @@ export type RadioGroupProps = ComponentPropsWithoutRef<typeof RadioGroupPrimitiv
   fontVariant?: TypographyProps['variant']
   options?: Option[]
   variant?: 'default' | 'empty'
+  position?: 'left' | 'right'
 }
 export const RadioGroup = React.forwardRef<
   ElementRef<typeof RadioGroupPrimitive.Root>,
@@ -49,13 +50,19 @@ export const RadioGroup = React.forwardRef<
     fontVariant = 'body2',
     options,
     variant = 'default',
+    position = 'right',
     ...rest
   } = props
   const defaultOption =
     options && options[0] && variant === 'default' ? options[0].value : undefined
 
   return (
-    <RadioGroupRoot defaultValue={defaultValue ?? defaultOption} {...rest} ref={ref}>
+    <RadioGroupRoot
+      className={position === 'left' ? s.position : ''}
+      defaultValue={defaultValue ?? defaultOption}
+      {...rest}
+      ref={ref}
+    >
       {children ??
         (options
           ? options.map(option => (
