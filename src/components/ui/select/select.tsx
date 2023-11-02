@@ -48,7 +48,14 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
     } = props
     const classes = {
       content: clsx(s.border, s.content),
-      trigger: clsx(s.border, s.select, s.trigger, fullWidth || s.size, className),
+      trigger: clsx(
+        s.border,
+        s.select,
+        s.trigger,
+        fullWidth || s.size,
+        className,
+        errorMessage ? s.error : ''
+      ),
     }
 
     return (

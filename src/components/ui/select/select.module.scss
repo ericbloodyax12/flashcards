@@ -18,7 +18,9 @@
 
 .item {
   width: calc(100% - 24px);
-  transition: var(--transition-duration-basic) background-color, color;
+  transition:
+    var(--transition-duration-basic) background-color,
+    color;
 
   &:hover {
     color: var(--color-accent-300);
@@ -41,7 +43,10 @@
 }
 
 .trigger {
-  transition: var(--transition-duration-basic) background-color, color, outline;
+  transition:
+    var(--transition-duration-basic) background-color,
+    color,
+    outline;
 
   &:disabled {
     cursor: default;
@@ -109,4 +114,8 @@
 
 .size {
   width: 210px;
+}
+
+.error {
+  border-color: var(--color-danger-300);
 }
