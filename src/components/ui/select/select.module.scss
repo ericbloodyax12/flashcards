@@ -63,7 +63,7 @@
 
   &[data-state='open'] {
     .icon {
-      animation: var(--transition-duration-basic) linear 1 normal forwards rotate;
+      animation: var(--transition-duration-basic) ease-in-out 1 alternate forwards rotate;
 
       @keyframes rotate {
         from {
@@ -117,5 +117,5 @@
 }
 
 .error {
-  border-color: var(--color-danger-300);
+  outline: 2px solid var(--color-danger-300);
 }

@@ -54,15 +54,12 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
         s.trigger,
         fullWidth || s.size,
         className,
-        errorMessage ? s.error : ''
+        errorMessage && s.error
       ),
     }
 
     return (
-      <SelectPrimitive.Root
-        defaultValue={defaultValue ?? (options ? options[0].value : '')}
-        {...rest}
-      >
+      <SelectPrimitive.Root defaultValue={defaultValue ?? (options && options[0].value)} {...rest}>
         {title && (
           <div className={s.title}>
             <Typography variant={'body2'}>{title}</Typography>
