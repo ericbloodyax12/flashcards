@@ -29,7 +29,6 @@ export type SelectProps = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> 
   className?: string
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
-  fullWidth?: boolean
   options?: Option[]
   title?: string
 }
@@ -41,30 +40,18 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
       defaultValue,
       errorMessage,
       fontVariant = 'body1',
-      fullWidth = false,
       options,
       title,
       ...rest
     } = props
     const classes = {
       content: clsx(s.border, s.content),
-      trigger: clsx(
-        s.border,
-        s.select,
-        s.trigger,
-        fullWidth || s.size,
-        className,
-        errorMessage && s.error
-      ),
+      trigger: clsx(s.border, s.select, s.trigger, className, errorMessage && s.error),
+      root: clsx(s.root, className),
     }
 
     return (
       <SelectPrimitive.Root defaultValue={defaultValue ?? (options && options[0].value)} {...rest}>
-        {title && (
-          <div className={s.title}>
-            <Typography variant={'body2'}>{title}</Typography>
-          </div>
-        )}
         <SelectPrimitive.Trigger
           aria-label={'Select-box'}
           className={classes.trigger}
@@ -74,6 +61,11 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
           <div className={s.container}>
             <SelectPrimitive.Value />
             <ArrowIcon className={s.icon} disabled={rest.disabled} />
+            {title && (
+              <Typography className={s.title} variant={'body2'}>
+                {title}
+              </Typography>
+            )}
           </div>
         </SelectPrimitive.Trigger>
         <SelectPrimitive.Content className={classes.content} position={'popper'} {...rest}>

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Typography } from '@/components/ui/typography'
-import { clsx } from 'clsx'
 
 import { Select, SelectItem } from './'
 
 import s from './select.stories.module.scss'
+import { clsx } from 'clsx'
 
 const meta = {
   component: Select,
@@ -27,20 +27,19 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
+export const Default: Story = {
   args,
 }
 
-export const FullWidth: Story = {
-  args: { ...args, fullWidth: true },
+export const Primary: Story = {
+  args: { ...args, className: s.primary },
 }
 
+const select = clsx(s.customized, s.margin)
 export const Customized = () => {
-  const customized = clsx(s.customized, s.margin)
-
   return (
     <>
-      <Select className={customized} defaultValue={args.options[0].value}>
+      <Select title={'Select-box'} className={select} defaultValue={args.options[0].value}>
         {args.options.map(option => (
           <SelectItem className={s.customized} key={option.value} value={option.value}>
             <Typography variant={'h2'}>{option.label}</Typography>
