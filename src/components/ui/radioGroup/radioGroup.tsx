@@ -11,7 +11,8 @@ const RadioGroupRoot = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
 >(({ className, ...rest }, ref) => {
-  return <RadioGroupPrimitive.Root className={clsx(s.root, className)} {...rest} ref={ref} />
+  const root = clsx(s.root, className)
+  return <RadioGroupPrimitive.Root className={root} {...rest} ref={ref} />
 })
 
 RadioGroupRoot.displayName = RadioGroupPrimitive.Root.displayName
@@ -19,8 +20,9 @@ export const RadioGroupItem = React.forwardRef<
   ElementRef<typeof RadioGroupPrimitive.Item>,
   ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
 >(({ children, className, ...props }, ref) => {
+  const item = clsx(s.option, className)
   return (
-    <RadioGroupPrimitive.Item className={clsx(s.option, className)} ref={ref} {...props}>
+    <RadioGroupPrimitive.Item className={item} ref={ref} {...props}>
       <div className={s.icon}></div>
     </RadioGroupPrimitive.Item>
   )
