@@ -24,9 +24,8 @@
 
 .item {
   width: calc(100% - 24px);
-  transition:
-    var(--transition-duration-basic) background-color,
-    color;
+  background-color: var(--color-dark-900);
+  transition: var(--transition-duration-basic) background-color, color;
 
   &:hover {
     color: var(--color-accent-300);
@@ -50,11 +49,9 @@
 
 .trigger {
   position: relative;
-  top: 12px;
-  transition:
-    var(--transition-duration-basic) background-color,
-    color,
-    outline;
+  top: 24px;
+  margin-bottom: 24px;
+  transition: var(--transition-duration-basic) background-color, color, outline;
 
   &:disabled {
     cursor: default;
@@ -122,8 +119,10 @@
 }
 
 .content {
+  overflow: hidden;
   width: var(--radix-select-trigger-width);
   max-height: var(--radix-select-content-available-height);
+  background-color: var(--color-dark-900);
 }
 
 .size {

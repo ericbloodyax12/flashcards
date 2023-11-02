@@ -69,14 +69,16 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
           </div>
         </SelectPrimitive.Trigger>
         <SelectPrimitive.Content className={classes.content} position={'popper'} {...rest}>
-          {children ??
-            (options
-              ? options.map(option => (
-                  <SelectItem key={option.value} value={option.value}>
-                    <Typography variant={fontVariant}>{option.label}</Typography>
-                  </SelectItem>
-                ))
-              : '')}
+          <SelectPrimitive.Viewport>
+            {children ??
+              (options
+                ? options.map(option => (
+                    <SelectItem key={option.value} value={option.value}>
+                      <Typography variant={fontVariant}>{option.label}</Typography>
+                    </SelectItem>
+                  ))
+                : '')}
+          </SelectPrimitive.Viewport>
         </SelectPrimitive.Content>
         <ErrorMessage error={errorMessage} />
       </SelectPrimitive.Root>
