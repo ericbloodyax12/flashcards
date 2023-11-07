@@ -7,11 +7,6 @@
 .label {
   cursor: pointer;
   padding-right: 10px;
-
-  &.disabled {
-    cursor: initial;
-    color: var(--color-dark-100);
-  }
 }
 
 .checkbox {
@@ -24,20 +19,6 @@
 
   border: 3px solid var(--color-light-900);
   border-radius: 4px;
-
-  &:disabled {
-    cursor: auto;
-
-    &::before,
-    &::after {
-      transform: translate(-50%, -50%) scale(0);
-      background-color: transparent;
-    }
-
-    .indicator {
-      fill: var(--color-dark-100);
-    }
-  }
 }
 
 .checked {
@@ -45,5 +26,18 @@
 
   .indicator {
     opacity: 1;
+  }
+}
+
+.disabled {
+  .label {
+    cursor: default;
+    color: var(--color-checkbox-disabled);
+  }
+
+  .checkbox {
+    cursor: inherit;
+    color: var(--color-light-700);
+    background-color: var(--color-light-700);
   }
 }
