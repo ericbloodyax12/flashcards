@@ -25,11 +25,10 @@
 .item {
   width: calc(100% - 24px);
   background-color: var(--color-dark-900);
-  transition:
-    var(--transition-duration-basic) background-color,
-    color;
+  transition: var(--transition-duration-basic) background-color, color;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--color-accent-300);
     background-color: var(--color-accent-900);
   }
@@ -53,10 +52,7 @@
   position: relative;
   top: 24px;
   margin-bottom: 24px;
-  transition:
-    var(--transition-duration-basic) background-color,
-    color,
-    outline;
+  transition: var(--transition-duration-basic) background-color, color, outline;
 
   &:disabled {
     cursor: default;
@@ -126,9 +122,12 @@
 .content {
   position: relative;
   z-index: 2;
+
   overflow: hidden;
+
   width: var(--radix-select-trigger-width);
   max-height: var(--radix-select-content-available-height);
+
   background-color: var(--color-dark-900);
 }
 
@@ -137,5 +136,6 @@
 }
 
 .error {
-  outline: 2px solid var(--color-danger-300);
+  border-color: var(--color-danger-300);
+  outline: 1px solid var(--color-danger-300);
 }

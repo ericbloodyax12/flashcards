@@ -1,12 +1,12 @@
 import React, { ComponentPropsWithoutRef, ElementRef } from 'react'
 
 import ArrowIcon from '@/assets/icons/arrow'
+import { ErrorMessage } from '@/components/ui/errorMessage'
 import { Typography, TypographyProps } from '@/components/ui/typography'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 
 import s from './select.module.scss'
-import { ErrorMessage } from '@/components/ui/errorMessage'
 
 export const SelectItem = React.forwardRef<
   ElementRef<typeof SelectPrimitive.Item>,
@@ -30,6 +30,7 @@ export type SelectProps = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> 
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
   options?: Option[]
+  placeholder?: string
   title?: string
 }
 export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger>, SelectProps>(
@@ -37,21 +38,21 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
     const {
       children = undefined,
       className,
-      defaultValue,
       errorMessage,
       fontVariant = 'body1',
       options,
+      placeholder,
       title,
       ...rest
     } = props
     const classes = {
       content: clsx(s.border, s.content),
-      trigger: clsx(s.border, s.select, s.trigger, className, errorMessage && s.error),
       root: clsx(s.root, className),
+      trigger: clsx(s.border, s.select, s.trigger, className, errorMessage && s.error),
     }
 
     return (
-      <SelectPrimitive.Root defaultValue={defaultValue ?? (options && options[0].value)} {...rest}>
+      <SelectPrimitive.Root {...rest}>
         <SelectPrimitive.Trigger
           aria-label={'Select-box'}
           className={classes.trigger}
@@ -59,7 +60,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
           {...rest}
         >
           <div className={s.container}>
-            <SelectPrimitive.Value />
+            <SelectPrimitive.Value placeholder={placeholder} />
             <ArrowIcon className={s.icon} disabled={rest.disabled} />
             {title && (
               <Typography className={s.title} variant={'body2'}>

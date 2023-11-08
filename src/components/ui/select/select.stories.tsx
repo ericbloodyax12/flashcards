@@ -19,6 +19,7 @@ const selectArgs = {
     { label: 'Select-box2', value: 'Select-box2' },
     { label: 'Select-box3', value: 'Select-box3' },
   ],
+  placeholder: 'Select',
   title: 'Select-box',
 }
 
