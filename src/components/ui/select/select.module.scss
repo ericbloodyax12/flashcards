@@ -17,7 +17,7 @@
   justify-content: space-between;
 
   width: 100%;
-  padding: 6px 12px;
+  padding: 5px 11px;
 
   color: var(--color-light-100);
 }
@@ -25,7 +25,9 @@
 .item {
   width: calc(100% - 24px);
   background-color: var(--color-dark-900);
-  transition: var(--transition-duration-basic) background-color, color;
+  transition:
+    var(--transition-duration-basic) background-color,
+    color;
 
   &:hover,
   &:focus {
@@ -51,8 +53,14 @@
 .trigger {
   position: relative;
   top: 24px;
+
+  min-height: 24px;
   margin-bottom: 24px;
-  transition: var(--transition-duration-basic) background-color, color, outline;
+
+  transition:
+    var(--transition-duration-basic) background-color,
+    color,
+    outline;
 
   &:disabled {
     cursor: default;
