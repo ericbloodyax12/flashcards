@@ -49,7 +49,15 @@ export const WithRemoteControl: Story = {
           Open Modal
         </span>
         <Modal {...args} onOpenChange={setOpen} open={open}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 24, padding: 24 }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              gap: 24,
+              padding: 24,
+            }}
+          >
             <SelectDefault />
             <TextField label={'Input1'} />
             <TextField label={'Input2'} />
