@@ -25,9 +25,7 @@
 .item {
   width: calc(100% - 24px);
   background-color: var(--color-dark-900);
-  transition:
-    var(--transition-duration-basic) background-color,
-    color;
+  transition: var(--transition-duration-basic) background-color, color;
 
   &:hover,
   &:focus {
@@ -57,10 +55,7 @@
   min-height: 24px;
   margin-bottom: 24px;
 
-  transition:
-    var(--transition-duration-basic) background-color,
-    color,
-    outline;
+  transition: var(--transition-duration-basic) background-color, color, outline;
 
   &:disabled {
     cursor: default;
@@ -72,7 +67,8 @@
   }
 
   &:focus:enabled {
-    outline: 2px solid var(--color-info-700);
+    border-color: var(--color-info-700);
+    outline: 1px solid var(--color-info-700);
   }
 
   &[data-state='open'] {
