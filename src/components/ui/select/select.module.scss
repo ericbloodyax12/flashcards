@@ -47,12 +47,6 @@
   min-height: 24px;
   transition: var(--transition-duration-basic) background-color, color, outline;
 
-  &.error {
-    &.title {
-      top: 16px;
-    }
-  }
-
   &:disabled {
     cursor: default;
     color: var(--color-dark-300);
@@ -137,7 +131,7 @@
 }
 
 .error {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   border-color: var(--color-danger-300);
   outline: none;
 }
