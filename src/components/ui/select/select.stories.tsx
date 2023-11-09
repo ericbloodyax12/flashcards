@@ -19,6 +19,7 @@ const selectArgs = {
     { label: 'Select-box2', value: 'Select-box2' },
     { label: 'Select-box3', value: 'Select-box3' },
   ],
+  placeholder: 'Select',
   title: 'Select-box',
 }
 
@@ -29,7 +30,7 @@ type Story = StoryObj<typeof meta>
 export const SelectDefault = () => <Select {...selectArgs} />
 
 export const SelectPrimary: Story = {
-  args: { ...selectArgs, className: s.primary, placeholder: 'Select' },
+  args: { ...selectArgs, className: s.primary },
 }
 
 const select = clsx(s.customized, s.margin)

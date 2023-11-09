@@ -1,15 +1,17 @@
+import { ComponentPropsWithoutRef } from 'react'
+
 import { Typography } from '@/components/ui/typography'
+import clsx from 'clsx'
 
 import s from './errorMessage.module.scss'
-import clsx from 'clsx'
 type Props = {
   error: string | undefined
   position?: 'left' | 'right'
-}
+} & ComponentPropsWithoutRef<typeof Typography>
 
 export const ErrorMessage = (props: Props) => {
-  const { error, position = 'right' } = props
-  const message = clsx(s.error, position === 'left' && s.position)
+  const { className, error, position = 'right' } = props
+  const message = clsx(s.error, position === 'left' && s.position, className)
 
   return (
     error && (

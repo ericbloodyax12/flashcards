@@ -47,8 +47,14 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
     } = props
     const classes = {
       content: clsx(s.border, s.content),
-      root: clsx(s.root, className),
-      trigger: clsx(s.border, s.select, s.trigger, className, errorMessage && s.error),
+      trigger: clsx(
+        s.border,
+        s.select,
+        s.trigger,
+        errorMessage && s.error,
+        title && s.marginTop,
+        className
+      ),
     }
 
     return (
@@ -67,6 +73,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
                 {title}
               </Typography>
             )}
+            <ErrorMessage className={s.errorMessage} error={errorMessage} />
           </div>
         </SelectPrimitive.Trigger>
         <SelectPrimitive.Content className={classes.content} position={'popper'} {...rest}>
@@ -81,7 +88,6 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
                 : '')}
           </SelectPrimitive.Viewport>
         </SelectPrimitive.Content>
-        <ErrorMessage error={errorMessage} />
       </SelectPrimitive.Root>
     )
   }
