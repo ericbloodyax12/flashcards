@@ -19,7 +19,9 @@
 .item {
   width: calc(100% - 24px);
   background-color: var(--color-dark-900);
-  transition: var(--transition-duration-basic) background-color, color;
+  transition:
+    var(--transition-duration-basic) background-color,
+    color;
 
   &:hover,
   &:focus {
@@ -49,7 +51,10 @@
   min-height: 24px;
   margin-bottom: 20px;
 
-  transition: var(--transition-duration-basic) background-color, color, outline;
+  transition:
+    var(--transition-duration-basic) background-color,
+    color,
+    outline;
 
   &.error {
     top: 16px;
@@ -137,10 +142,6 @@
   max-height: var(--radix-select-content-available-height);
 
   background-color: var(--color-dark-900);
-}
-
-.size {
-  width: 210px;
 }
 
 .error {
