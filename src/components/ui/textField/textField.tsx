@@ -63,14 +63,3 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) =
     </div>
   )
 })
-
-// function getIcon(isPassword: boolean, showPassword: boolean) {
-//   if (!isPassword) {
-//     return null
-//   }
-//   if (showPassword) {
-//     return <EyeOffIcon className={s.eyeIcon} />
-//   }
-//
-//   return <EyeIcon className={s.eyeIcon} />
-// }
