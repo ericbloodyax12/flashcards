@@ -19,9 +19,7 @@
 .item {
   width: calc(100% - 24px);
   background-color: var(--color-dark-900);
-  transition:
-    var(--transition-duration-basic) background-color,
-    color;
+  transition: var(--transition-duration-basic) background-color, color;
 
   &:hover,
   &:focus {
@@ -46,19 +44,13 @@
 
 .trigger {
   position: relative;
-  top: 12px;
-
   min-height: 24px;
-  margin-bottom: 20px;
-
-  transition:
-    var(--transition-duration-basic) background-color,
-    color,
-    outline;
+  transition: var(--transition-duration-basic) background-color, color, outline;
 
   &.error {
-    top: 16px;
-    margin-top: 6px;
+    &.title {
+      top: 16px;
+    }
   }
 
   &:disabled {
@@ -76,7 +68,7 @@
 
     &.error {
       border-color: var(--color-danger-300);
-      outline: 1px solid var(--color-danger-300);
+      outline: none;
     }
   }
 
@@ -145,13 +137,13 @@
 }
 
 .error {
-  margin-bottom: 36px;
+  margin-bottom: 20px;
   border-color: var(--color-danger-300);
-  outline: 1px solid var(--color-danger-300);
+  outline: none;
 }
 
 .marginTop {
-  margin-top: 12px;
+  margin-top: 20px;
 }
 
 .errorMessage {
