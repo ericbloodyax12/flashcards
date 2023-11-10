@@ -17,40 +17,36 @@ export type InputProps = {
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { className, errorMessage, label, disabled, search, variant = 'default', ...rest } = props
+  const { className, disabled, errorMessage, label, search, variant = 'default', ...rest } = props
   const [isShowPassword, setIsShowPassword] = useState(false)
 
   const classes = {
-    container: clsx(
-      s.inputContainer,
-      errorMessage && clsx(s.errorMessage, s.marginBottom),
-      label && s.marginTop
-    ),
-    error: disabled && s.disabled,
+    container: clsx(s.inputContainer, errorMessage && s.errorMessage, label && s.marginTop),
+    error: clsx(s.error, disabled && s.disabled),
+    iconButton: clsx(disabled ? s.disabled : s.iconButton),
     inputClassName: clsx(s.input, s[variant], errorMessage && s.errorMessage, className),
     label: clsx(s.label, disabled && s.disabled),
-    iconButton: clsx(disabled ? s.disabled : s.iconButton),
   }
 
   return (
     <div className={classes.container}>
       {label && (
-        <Typography as={'label'} htmlFor={label} className={classes.label} variant={'body2'}>
+        <Typography as={'label'} className={classes.label} htmlFor={label} variant={'body2'}>
           {label}
         </Typography>
       )}
       {variant === 'search' && <SearchIcon className={s.icon} disabled={disabled} />}
       <input
-        id={label}
         className={classes.inputClassName}
-        type={isShowPassword ? 'text' : variant}
         disabled={disabled}
+        id={label}
+        type={isShowPassword ? 'text' : variant}
         {...rest}
         ref={ref}
       />
 
       <button
-        className={classes.iconButton} // inputContainer--icon-button
+        className={classes.iconButton}
         onClick={() => {
           setIsShowPassword(value => !value)
         }}
