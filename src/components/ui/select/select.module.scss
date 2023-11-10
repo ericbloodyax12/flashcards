@@ -47,6 +47,7 @@
 .trigger {
   position: relative;
   min-height: 24px;
+  margin-bottom: 24px;
   transition:
     var(--transition-duration-basic) background-color,
     color,
@@ -136,7 +137,6 @@
 }
 
 .error {
-  margin-bottom: 40px;
   border-color: var(--color-danger-300);
   outline: none;
 }

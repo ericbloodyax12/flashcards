@@ -21,10 +21,15 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) =
   const [isShowPassword, setIsShowPassword] = useState(false)
 
   const classes = {
-    container: clsx(s.inputContainer, errorMessage && s.errorMessage, label && s.marginTop),
+    container: clsx(
+      s.inputContainer,
+      errorMessage && s.errorMessage,
+      label && s.marginTop,
+      className
+    ),
     error: clsx(s.error, disabled && s.disabled),
     iconButton: clsx(disabled ? s.disabled : s.iconButton),
-    inputClassName: clsx(s.input, s[variant], errorMessage && s.errorMessage, className),
+    inputClassName: clsx(s.input, s[variant], errorMessage && s.errorMessage),
     label: clsx(s.label, disabled && s.disabled),
   }
 
