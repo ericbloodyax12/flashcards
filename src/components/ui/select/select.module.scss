@@ -19,9 +19,7 @@
 .item {
   width: calc(100% - 24px);
   background-color: var(--color-dark-900);
-  transition:
-    var(--transition-duration-basic) background-color,
-    color;
+  transition: var(--transition-duration-basic) background-color, color;
 
   &:hover,
   &:focus {
@@ -47,11 +45,8 @@
 .trigger {
   position: relative;
   min-height: 24px;
-  margin-bottom: 24px;
-  transition:
-    var(--transition-duration-basic) background-color,
-    color,
-    outline;
+  margin-bottom: 40px;
+  transition: var(--transition-duration-basic) background-color, color, outline;
 
   &:disabled {
     cursor: default;
