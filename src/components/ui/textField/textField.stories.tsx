@@ -22,6 +22,7 @@ export const Default: Story = {
     disabled: false,
     label: 'Input',
     variant: 'default',
+    style: { width: 1190 },
   },
 }
 
@@ -30,23 +31,20 @@ export const Password: Story = {
     disabled: false,
     label: 'Input',
     variant: 'password',
+    style: { width: 1160 },
   },
 }
 export const Search: Story = {
   args: {
     disabled: false,
     variant: 'search',
+    style: { width: 1160 },
   },
 }
 export const Error: Story = {
   args: {
     disabled: false,
     errorMessage: 'Error',
-  },
-}
-export const FullWidth: Story = {
-  args: {
-    disabled: false,
-    fullWidth: true,
+    style: { width: 1190 },
   },
 }

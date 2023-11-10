@@ -1,41 +1,98 @@
-@import 'utils/common-styles-textField/common-styles-textField';
-
 .inputContainer {
   position: relative;
-  width: 284px;
   height: 36px;
-  margin-top: 20px;
 }
 
-.iconbutton {
+.marginTop {
+  margin-top: 24px;
+}
+
+.marginBottom {
+  margin-bottom: 40px;
+}
+
+.iconButton {
   all: unset;
   cursor: pointer;
   background-color: transparent;
 }
 
-.default {
-  @include common-styles-input;
-}
+.input {
+  width: 100%;
+  height: 100%;
+  padding-left: 11px;
 
-.password {
-  @include common-styles-input;
+  color: var(--color-dark-100);
 
-  width: 242px;
-  padding-right: 42px; // Ширина иконки глаза + дополнительный отступ
+  background-color: transparent;
+  border: 1px solid var(--color-dark-500);
+  border-radius: 2px;
+
+  &:disabled {
+    color: var(--color-dark-300);
+  }
+
+  &.errorMessage:enabled {
+    color: var(--color-danger-300);
+    border: 1px solid var(--color-danger-300);
+    border-radius: 2px;
+    outline: none;
+  }
+
+  &:hover:enabled {
+    color: var(--color-dark-100);
+    background-color: var(--color-dark-700);
+    border: 1px solid var(--color-dark-100);
+
+    &.errorMessage {
+      color: var(--color-danger-300);
+      border-color: var(--color-danger-300);
+      outline: none;
+    }
+  }
+
+  &:focus:enabled {
+    color: var(--color-dark-100);
+
+    background-color: transparent;
+    border: 1px solid var(--color-info-700);
+    border-radius: 2px;
+    outline: 1px solid var(--color-info-700);
+
+    &.errorMessage {
+      color: var(--color-danger-300);
+      border-color: var(--color-danger-300);
+      outline: none;
+    }
+  }
+
+  &:active:enabled {
+    color: var(--color-light-100);
+    border-color: var(--color-light-100);
+    outline: none;
+  }
 }
 
 .search {
-  @include common-styles-input;
+  padding-left: 42px;
+}
 
-  width: 254px;
-  padding-left: 40px; // Это значение должно быть больше, чем левый отступ иконки
+.password {
+  padding-right: 36px;
+}
+
+.error {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  color: var(--color-danger-300);
 }
 
 .icon {
   position: absolute; // Позиционируем иконку абсолютно внутри родительского элемента
   z-index: 1;
   top: 50%; // Размещаем её вертикально по центру относительно родительского контейнера
-  left: 10px; // Устанавливаем её слева от поля ввода
+  left: 12px; // Устанавливаем её слева от поля ввода
   transform: translateY(-50%); // Дополнительная коррекция для вертикального центрирования
 
   width: 20px;
@@ -48,22 +105,21 @@
   position: absolute;
   z-index: 1;
   top: 50%;
-  left: calc(100% - 20px - 10px);
+  right: 0;
+  bottom: 50%;
   transform: translateY(-50%);
 
   width: 20px;
   height: 20px;
+  margin-right: 12px;
+  padding: 0;
 
   color: var(--color-dark-100);
-
-  &:focus-visible {
-    outline: var(--outline-focus);
-  }
 }
 
 .label {
   position: absolute;
-  bottom: 33px; // Разместить над контейнером
+  bottom: 38px; // Разместить над контейнером
   left: 0; // Разместить слева
 
   width: 32px;
@@ -72,18 +128,7 @@
   color: var(--color-dark-100);
 }
 
-.error {
-  color: var(--color-danger-300);
-  border-color: var(--color-danger-300);
-
-  &:focus {
-    background-color: transparent;
-    border: 2px solid var(--color-danger-300);
-    border-radius: 2px;
-    outline: 1px solid var(--color-danger-300);
-  }
-}
-
-.fullWidth {
-  width: 100%;
+.disabled {
+  cursor: default;
+  color: var(--color-dark-300);
 }
