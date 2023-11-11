@@ -27,7 +27,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
       className
     ),
     error: clsx(s.error, disabled && s.disabled),
-    iconButton: clsx(disabled ? s.disabled : s.iconButton),
+    iconButton: clsx(s.iconButton, disabled && s.disabled),
     inputClassName: clsx(s.input, s[variant], errorMessage && s.errorMessage),
     label: clsx(s.label, disabled && s.disabled),
   }
