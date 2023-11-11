@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import Check from '@/assets/icons/check'
-import { Typography } from '@/components/ui/typography'
+import { Label } from '@/components/ui/label'
 import * as RadixCheckbox from '@radix-ui/react-checkbox'
 import { clsx } from 'clsx'
 
@@ -39,11 +39,7 @@ export const Checkbox = forwardRef<ElementRef<typeof RadixCheckbox.Root>, Checkb
             </RadixCheckbox.Indicator>
           )}
         </div>
-        {label && (
-          <Typography as={'label'} className={classes.label} htmlFor={label} variant={'body2'}>
-            {label}
-          </Typography>
-        )}
+        <Label className={classes.label} label={label} />
       </RadixCheckbox.Root>
     )
   }

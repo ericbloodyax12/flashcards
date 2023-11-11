@@ -5,9 +5,8 @@ import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
   argTypes: {
-    checked: { type: 'boolean' },
-    id: { control: 'text', defaultValue: 'id-1' },
-    label: { control: 'text', defaultValue: 'checkbox' },
+    disabled: { control: { type: 'radio' }, defaultValue: false, options: [true, false] },
+    label: { control: 'text' },
   },
   component: Checkbox,
   tags: ['autodocs'],
@@ -17,9 +16,11 @@ const meta = {
 export default meta
 export type Story = StoryObj<typeof meta>
 
-export const CheckboxDefault = () => {
+export const CheckboxDefault = (arg: Story) => {
   const [checked, setChecked] = useState(false)
   const onChangeChecked = () => setChecked(!checked)
 
-  return <Checkbox checked={checked} label={'Check-box'} onCheckedChange={onChangeChecked} />
+  return (
+    <Checkbox checked={checked} {...arg} label={'Check-box'} onCheckedChange={onChangeChecked} />
+  )
 }
