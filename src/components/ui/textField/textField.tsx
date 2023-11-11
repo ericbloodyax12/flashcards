@@ -4,18 +4,18 @@ import { EyeIcon } from '@/assets/icons/eye'
 import { EyeOffIcon } from '@/assets/icons/eyeoff'
 import SearchIcon from '@/assets/icons/search'
 import { ErrorMessage } from '@/components/ui/errorMessage'
+import { Label } from '@/components/ui/label'
 import { clsx } from 'clsx'
 
 import s from './textField.module.scss'
-import { Label } from '@/components/ui/label'
-export type InputProps = {
+export type TextFieldProps = {
   errorMessage?: string
   label?: string
   search?: boolean
   variant?: 'default' | 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 
-export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
   const { className, disabled, errorMessage, label, search, variant = 'default', ...rest } = props
   const [isShowPassword, setIsShowPassword] = useState(false)
 
@@ -34,7 +34,7 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) =
 
   return (
     <div className={classes.container}>
-      <Label label={label} className={classes.label} />
+      <Label className={classes.label} label={label} />
       {variant === 'search' && <SearchIcon className={s.icon} disabled={disabled} />}
       <input
         className={classes.inputClassName}
