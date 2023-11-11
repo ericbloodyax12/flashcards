@@ -4,13 +4,12 @@ import { EyeIcon } from '@/assets/icons/eye'
 import { EyeOffIcon } from '@/assets/icons/eyeoff'
 import SearchIcon from '@/assets/icons/search'
 import { ErrorMessage } from '@/components/ui/errorMessage'
-import { Typography } from '@/components/ui/typography'
 import { clsx } from 'clsx'
 
 import s from './textField.module.scss'
+import { Label } from '@/components/ui/label'
 export type InputProps = {
   errorMessage?: string
-  fullWidth?: boolean
   label?: string
   search?: boolean
   variant?: 'default' | 'password' | 'search'
@@ -35,11 +34,7 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) =
 
   return (
     <div className={classes.container}>
-      {label && (
-        <Typography as={'label'} className={classes.label} htmlFor={label} variant={'body2'}>
-          {label}
-        </Typography>
-      )}
+      <Label label={label} className={classes.label} />
       {variant === 'search' && <SearchIcon className={s.icon} disabled={disabled} />}
       <input
         className={classes.inputClassName}
