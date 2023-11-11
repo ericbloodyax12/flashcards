@@ -38,7 +38,7 @@ export const Search: Story = {
   args: {
     disabled: false,
     variant: 'search',
-    style: { width: 1160 },
+    style: { width: 1120 },
   },
 }
 export const Error: Story = {

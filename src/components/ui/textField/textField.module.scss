@@ -1,11 +1,14 @@
 .inputContainer {
   position: relative;
   height: 36px;
-  margin-bottom: 40px;
 }
 
 .marginTop {
   margin-top: 24px;
+}
+
+.marginBottom {
+  margin-bottom: 48px;
 }
 
 .iconButton {
@@ -71,7 +74,7 @@
 }
 
 .search {
-  padding-left: 42px;
+  padding: 0 42px;
 }
 
 .password {
@@ -127,4 +130,16 @@
 .disabled {
   cursor: default;
   color: var(--color-dark-300);
+}
+
+.cross {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
 }
