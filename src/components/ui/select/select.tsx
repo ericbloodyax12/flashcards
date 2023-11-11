@@ -7,6 +7,7 @@ import * as SelectPrimitive from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 
 import s from './select.module.scss'
+import { Label } from '@/components/ui/label'
 
 export const SelectItem = React.forwardRef<
   ElementRef<typeof SelectPrimitive.Item>,
@@ -55,6 +56,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
         title && s.marginTop,
         className
       ),
+      title: clsx(s.title, rest.disabled && s.disabled),
     }
 
     return (
@@ -68,11 +70,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
           <div className={s.container}>
             <SelectPrimitive.Value placeholder={placeholder} />
             <ArrowIcon className={s.icon} disabled={rest.disabled} />
-            {title && (
-              <Typography className={s.title} variant={'body2'}>
-                {title}
-              </Typography>
-            )}
+            <Label label={title} className={classes.title} />
             <ErrorMessage className={s.errorMessage} error={errorMessage} />
           </div>
         </SelectPrimitive.Trigger>
