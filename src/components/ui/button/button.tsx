@@ -25,6 +25,7 @@ export const Button = forwardRef(
     ref: ElementRef<T>
   ) => {
     const { as: Component = 'button', className, fullWidth, variant = 'primary', ...rest } = props
+    const classDisabled = props.disabled && clsx(s[variant + '_disabled'], s.disabled)
 
     return (
       // @ts-expect-error todo: not sure how to type it
@@ -34,7 +35,7 @@ export const Button = forwardRef(
           s.button,
           fullWidth ? s.fullWidth : '',
           className,
-          props.disabled && clsx(s[variant + '_disabled'], s.disabled)
+          classDisabled
         )}
         ref={ref}
         {...rest}
