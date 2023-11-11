@@ -55,7 +55,8 @@
   }
 
   &:not([data-disabled]) {
-    &:hover {
+    &:hover,
+    &:focus-within {
       .background {
         background-color: var(--color-dark-500);
 
