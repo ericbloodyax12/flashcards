@@ -52,9 +52,8 @@ export const TextField = forwardRef<HTMLInputElement, InputProps>((props, ref) =
 
       <button
         className={classes.iconButton}
-        onClick={() => {
-          setIsShowPassword(value => !value)
-        }}
+        onClick={() => setIsShowPassword(value => !value)}
+        type={'button'}
       >
         {isShowPassword
           ? variant === 'password' && <EyeOffIcon className={s.eyeIcon} disabled={disabled} />
