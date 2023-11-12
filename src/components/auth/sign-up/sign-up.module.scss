@@ -24,8 +24,8 @@
 
 .title {
   margin-top: 33px;
-  text-align: center;
   color: var(--color-light-100);
+  text-align: center;
 }
 
 .button {
@@ -33,6 +33,8 @@
 }
 
 .signInLink {
+  cursor: pointer;
+
   display: flex;
   justify-content: center;
 
