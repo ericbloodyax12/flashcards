@@ -2,6 +2,15 @@
   position: relative;
   height: 36px;
 
+  &:active {
+    .searchIcons {
+      .icon,
+      .cross {
+        fill: var(--color-light-100);
+      }
+    }
+  }
+
   .searchIcons {
     .cross {
       cursor: pointer;
@@ -31,17 +40,12 @@
     }
 
     &:active {
+      fill: var(--color-light-100);
+
       .icon,
       .cross {
         fill: var(--color-dark-100);
       }
-    }
-  }
-
-  &:active {
-    .icon,
-    .cross {
-      fill: var(--color-light-100);
     }
   }
 }
@@ -117,6 +121,10 @@
     color: var(--color-light-100);
     border-color: var(--color-light-100);
     outline: none;
+
+    &::placeholder {
+      color: var(--color-light-100);
+    }
   }
 }
 
