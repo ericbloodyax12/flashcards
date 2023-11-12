@@ -2,15 +2,6 @@
   position: relative;
   height: 36px;
 
-  &:active {
-    .searchIcons {
-      .icon,
-      .cross {
-        fill: var(--color-light-100);
-      }
-    }
-  }
-
   .searchIcons {
     .cross {
       cursor: pointer;
@@ -38,13 +29,20 @@
 
       fill: var(--color-dark-100);
     }
+  }
 
-    &:active {
-      fill: var(--color-light-100);
-
+  &:active {
+    .searchIcons {
       .icon,
       .cross {
-        fill: var(--color-dark-100);
+        fill: var(--color-light-100);
+      }
+
+      &:active {
+        .icon,
+        .cross {
+          fill: var(--color-dark-100);
+        }
       }
     }
   }
@@ -87,6 +85,12 @@
 
     &::placeholder {
       color: var(--color-danger-300);
+    }
+
+    &:active {
+      &::placeholder {
+        color: var(--color-danger-300);
+      }
     }
   }
 
@@ -161,8 +165,8 @@
 
 .label {
   position: absolute;
-  bottom: 38px; // Разместить над контейнером
-  left: 0; // Разместить слева
+  bottom: 38px;
+  left: 0;
 
   height: 24px;
 
