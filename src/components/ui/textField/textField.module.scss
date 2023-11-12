@@ -80,6 +80,10 @@
     border: 1px solid var(--color-danger-300);
     border-radius: 2px;
     outline: none;
+
+    &::placeholder {
+      color: var(--color-danger-300);
+    }
   }
 
   &:hover:enabled {
@@ -113,7 +117,6 @@
     color: var(--color-light-100);
     border-color: var(--color-light-100);
     outline: none;
-    fill: #234e99;
   }
 }
 
