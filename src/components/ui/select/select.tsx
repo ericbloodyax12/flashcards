@@ -2,12 +2,12 @@ import React, { ComponentPropsWithoutRef, ElementRef } from 'react'
 
 import ArrowIcon from '@/assets/icons/arrow'
 import { ErrorMessage } from '@/components/ui/errorMessage'
+import { Label } from '@/components/ui/label'
 import { Typography, TypographyProps } from '@/components/ui/typography'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 
 import s from './select.module.scss'
-import { Label } from '@/components/ui/label'
 
 export const SelectItem = React.forwardRef<
   ElementRef<typeof SelectPrimitive.Item>,
@@ -30,6 +30,7 @@ export type SelectProps = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> 
   className?: string
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
+  location?: 'fixed' | 'relative'
   options?: Option[]
   placeholder?: string
   title?: string
@@ -41,6 +42,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
       className,
       errorMessage,
       fontVariant = 'body1',
+      location = 'relative',
       options,
       placeholder,
       title,
@@ -48,15 +50,16 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
     } = props
     const classes = {
       content: clsx(s.border, s.content),
+      title: clsx(s.title, rest.disabled && s.disabled),
       trigger: clsx(
         s.border,
         s.select,
         s.trigger,
         errorMessage && s.error,
+        errorMessage && location === 'relative' && s.marginBottom,
         title && s.marginTop,
         className
       ),
-      title: clsx(s.title, rest.disabled && s.disabled),
     }
 
     return (
@@ -70,7 +73,7 @@ export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Trigger
           <div className={s.container}>
             <SelectPrimitive.Value placeholder={placeholder} />
             <ArrowIcon className={s.icon} disabled={rest.disabled} />
-            <Label label={title} className={classes.title} />
+            <Label className={classes.title} label={title} />
             <ErrorMessage className={s.errorMessage} error={errorMessage} />
           </div>
         </SelectPrimitive.Trigger>

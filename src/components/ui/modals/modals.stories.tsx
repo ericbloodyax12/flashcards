@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { CheckboxDefault } from '@/components/ui/checkbox/checkbox.stories'
 import { Modal } from '@/components/ui/modals'
-import { SelectDefault } from '@/components/ui/select/select.stories'
+import { Select } from '@/components/ui/select'
 import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { Meta, StoryObj } from '@storybook/react'
@@ -42,6 +42,15 @@ export const WithRemoteControl: Story = {
   render: args => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [open, setOpen] = useState(false)
+    const argsSelect = {
+      disabled: false,
+      options: [
+        { label: 'Select-box1', value: 'Select-box1' },
+        { label: 'Select-box2', value: 'Select-box2' },
+      ],
+      placeholder: 'Select',
+      title: 'Select-box',
+    }
 
     return (
       <>
@@ -49,16 +58,8 @@ export const WithRemoteControl: Story = {
           Open Modal
         </span>
         <Modal {...args} onOpenChange={setOpen} open={open}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              gap: 24,
-              padding: 24,
-            }}
-          >
-            <SelectDefault />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24, padding: 24 }}>
+            <Select {...argsSelect} location={'fixed'} />
             <TextField label={'Input1'} />
             <TextField label={'Input2'} />
             <CheckboxDefault />

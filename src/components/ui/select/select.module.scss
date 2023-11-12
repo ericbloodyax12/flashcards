@@ -19,9 +19,7 @@
 .item {
   width: calc(100% - 24px);
   background-color: var(--color-dark-900);
-  transition:
-    var(--transition-duration-basic) background-color,
-    color;
+  transition: var(--transition-duration-basic) background-color, color;
 
   &:hover,
   &:focus {
@@ -47,11 +45,7 @@
 .trigger {
   position: relative;
   min-height: 24px;
-  margin-bottom: 40px;
-  transition:
-    var(--transition-duration-basic) background-color,
-    color,
-    outline;
+  transition: var(--transition-duration-basic) background-color, color, outline;
 
   &:disabled {
     cursor: default;
@@ -148,6 +142,10 @@
 
 .marginTop {
   margin-top: 24px;
+}
+
+.marginBottom {
+  margin-bottom: 48px;
 }
 
 .errorMessage {
