@@ -1,6 +1,49 @@
 .inputContainer {
   position: relative;
   height: 36px;
+
+  .searchIcons {
+    .cross {
+      cursor: pointer;
+
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+
+      fill: var(--color-dark-100);
+    }
+
+    .icon {
+      position: absolute; // Позиционируем иконку абсолютно внутри родительского элемента
+      z-index: 1;
+      top: 50%; // Размещаем её вертикально по центру относительно родительского контейнера
+      left: 12px; // Устанавливаем её слева от поля ввода
+      transform: translateY(-50%); // Дополнительная коррекция для вертикального центрирования
+
+      width: 20px;
+      height: 20px;
+
+      color: var(--color-dark-100);
+
+      fill: var(--color-dark-100);
+    }
+
+    &:active {
+      .icon,
+      .cross {
+        fill: var(--color-dark-100);
+      }
+    }
+  }
+
+  &:active {
+    .icon,
+    .cross {
+      fill: var(--color-light-100);
+    }
+  }
 }
 
 .marginTop {
@@ -70,6 +113,7 @@
     color: var(--color-light-100);
     border-color: var(--color-light-100);
     outline: none;
+    fill: #234e99;
   }
 }
 
@@ -86,19 +130,6 @@
   top: 36px;
   left: 0;
   color: var(--color-danger-300);
-}
-
-.icon {
-  position: absolute; // Позиционируем иконку абсолютно внутри родительского элемента
-  z-index: 1;
-  top: 50%; // Размещаем её вертикально по центру относительно родительского контейнера
-  left: 12px; // Устанавливаем её слева от поля ввода
-  transform: translateY(-50%); // Дополнительная коррекция для вертикального центрирования
-
-  width: 20px;
-  height: 20px;
-
-  color: var(--color-dark-100);
 }
 
 .eyeIcon {
@@ -130,16 +161,6 @@
 .disabled {
   cursor: default;
   color: var(--color-dark-300);
-}
-
-.cross {
-  all: unset;
-
-  cursor: pointer;
-
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
+  border-color: var(--color-dark-300);
+  fill: var(--color-dark-300);
 }

@@ -46,8 +46,10 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
       errorMessage && s.errorMessage,
       errorMessage && position === 'relative' && s.marginBottom,
       label && s.marginTop,
-      className
+      className,
+      disabled && s.disabled
     ),
+    cross: clsx(s.cross, disabled && s.disabled),
     error: clsx(s.error, disabled && s.disabled),
     iconButton: clsx(s.iconButton, disabled && s.disabled),
     inputClassName: clsx(s.input, s[variant], errorMessage && s.errorMessage),
@@ -64,16 +66,22 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
   useImperativeHandle(ref, () => inputRef.current!, [])
   const handleClick = () => {
     !disabled && inputRef && inputRef.current && (inputRef.current.value = '')
-    setInputValue('')
+    !disabled && setInputValue('')
   }
 
   return (
     <div className={classes.container}>
       <Label className={classes.label} label={label} />
-      {variant === 'search' && <SearchIcon className={s.icon} disabled={disabled} />}
-      {variant === 'search' && inputValue && (
-        <CrossIcon className={s.cross} cleanSearchHandler={handleClick} disabled={disabled} />
-      )}
+      <div className={s.searchIcons}>
+        {variant === 'search' && <SearchIcon className={s.icon} disabled={disabled} />}
+        {variant === 'search' && inputValue && (
+          <CrossIcon
+            className={classes.cross}
+            cleanSearchHandler={handleClick}
+            disabled={disabled}
+          />
+        )}
+      </div>
       <input
         className={classes.inputClassName}
         disabled={disabled}
