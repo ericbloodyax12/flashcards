@@ -67,7 +67,7 @@
   height: 100%;
   padding-left: 11px;
 
-  color: var(--color-dark-100);
+  color: var(--color-light-100);
 
   background-color: transparent;
   border: 1px solid var(--color-dark-500);
@@ -95,7 +95,6 @@
   }
 
   &:hover:enabled {
-    color: var(--color-dark-100);
     background-color: var(--color-dark-700);
     border: 1px solid var(--color-dark-100);
 
@@ -107,11 +106,7 @@
   }
 
   &:focus:enabled {
-    color: var(--color-dark-100);
-
-    background-color: transparent;
     border: 1px solid var(--color-info-700);
-    border-radius: 2px;
     outline: 1px solid var(--color-info-700);
 
     &.errorMessage {
