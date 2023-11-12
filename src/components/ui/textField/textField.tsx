@@ -20,8 +20,8 @@ import s from './textField.module.scss'
 export type TextFieldProps = {
   errorMessage?: string
   label?: string
+  location?: 'fixed' | 'relative'
   onValueChange?: (value: string) => void
-  position?: 'fixed' | 'relative'
   variant?: 'default' | 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 
@@ -31,9 +31,9 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
     disabled,
     errorMessage,
     label,
+    location = 'relative',
     onChange,
     onValueChange,
-    position = 'relative',
     variant = 'default',
     ...rest
   } = props
@@ -44,7 +44,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
     container: clsx(
       s.inputContainer,
       errorMessage && s.errorMessage,
-      errorMessage && position === 'relative' && s.marginBottom,
+      errorMessage && location === 'relative' && s.marginBottom,
       label && s.marginTop,
       className,
       disabled && s.disabled
