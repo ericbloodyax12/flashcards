@@ -166,4 +166,8 @@
   color: var(--color-dark-300);
   border-color: var(--color-dark-300);
   fill: var(--color-dark-300);
+
+  ::placeholder {
+    color: var(--color-dark-300);
+  }
 }
