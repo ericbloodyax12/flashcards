@@ -13,5 +13,7 @@ export const ControlledSelect = <T extends FieldValues>({ control, name, ...rest
     name,
   })
 
-  return <Select {...rest} {...field} errorMessage={error?.message} onValueChange={onChange} />
+  return (
+    <Select {...rest} {...field} errorMessage={error?.message} id={name} onValueChange={onChange} />
+  )
 }

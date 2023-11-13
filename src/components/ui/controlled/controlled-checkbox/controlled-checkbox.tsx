@@ -12,5 +12,5 @@ export const ControlledCheckbox = <T extends FieldValues>({ control, name, ...re
     name,
   })
 
-  return <Checkbox {...rest} {...field} checked={value} onCheckedChange={onChange} />
+  return <Checkbox {...rest} {...field} checked={value} id={name} onCheckedChange={onChange} />
 }
