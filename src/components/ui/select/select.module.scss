@@ -19,7 +19,9 @@
 .item {
   width: calc(100% - 24px);
   background-color: var(--color-dark-900);
-  transition: var(--transition-duration-basic) background-color, color;
+  transition:
+    var(--transition-duration-basic) background-color,
+    color;
 
   &:hover,
   &:focus {
@@ -45,7 +47,10 @@
 .trigger {
   position: relative;
   min-height: 24px;
-  transition: var(--transition-duration-basic) background-color, color, outline;
+  transition:
+    var(--transition-duration-basic) background-color,
+    color,
+    outline;
 
   &:disabled {
     cursor: default;
@@ -68,17 +73,15 @@
 
   &[data-state='open'] {
     .icon {
-      animation: var(--transition-duration-basic) ease-in-out 1 alternate forwards rotate;
+      transform: rotate(180deg);
+      transition: var(--transition-duration-basic) transform;
+    }
+  }
 
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-
-        to {
-          transform: rotate(180deg);
-        }
-      }
+  &[data-state='closed'] {
+    .icon {
+      transform: rotate(0deg);
+      transition: var(--transition-duration-basic) transform;
     }
   }
 
