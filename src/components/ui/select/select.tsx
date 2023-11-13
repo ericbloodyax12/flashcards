@@ -30,6 +30,7 @@ export type SelectProps = ComponentPropsWithoutRef<typeof SelectPrimitive.Root> 
   className?: string
   errorMessage?: string
   fontVariant?: TypographyProps['variant']
+  id?: string
   location?: 'fixed' | 'relative'
   options?: Option[]
   placeholder?: string
