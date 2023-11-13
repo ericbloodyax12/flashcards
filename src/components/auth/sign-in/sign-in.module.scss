@@ -1,0 +1,63 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  max-width: 420px;
+
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: flex-start;
+
+  width: 100%;
+  margin-bottom: 29px;
+  padding: 0 36px;
+}
+
+.title {
+  margin-top: 33px;
+  color: var(--color-light-100);
+  text-align: center;
+}
+
+.button {
+  margin-top: 42px;
+}
+
+.signInLink {
+  cursor: pointer;
+
+  margin-top: -13px;
+  margin-right: auto;
+  margin-left: auto;
+
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-500);
+  text-decoration: underline;
+}
+
+.text {
+  margin-top: -4px;
+  color: var(--color-light-100);
+}
+
+.recover {
+  cursor: pointer;
+  margin-top: -18px;
+  margin-right: 12px;
+  margin-left: auto;
+}
+
+.checkBox {
+  margin-top: -12px;
+  margin-right: auto;
+}
