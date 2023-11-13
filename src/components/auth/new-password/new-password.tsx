@@ -42,6 +42,7 @@ export const NewPassword = (props: Props) => {
         </Typography>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <ControlledTextField
+            autoComplete={'off'}
             control={control}
             label={'Password'}
             location={'fixed'}

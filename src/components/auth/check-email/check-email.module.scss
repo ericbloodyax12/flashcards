@@ -21,6 +21,11 @@
 
 .button {
   margin-top: 65px;
+  transition: var(--transition-duration-basic) background-color;
+
+  &:hover {
+    background-color: var(--color-accent-300);
+  }
 }
 
 .text {

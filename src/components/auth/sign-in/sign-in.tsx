@@ -44,10 +44,11 @@ export const SignIn = (props: Props) => {
       <DevTool control={control} />
       <Card className={s.card}>
         <Typography className={s.title} variant={'large'}>
-          Sign Up
+          Sign In
         </Typography>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <ControlledTextField
+            autoComplete={'on'}
             control={control}
             label={'Email'}
             location={'fixed'}
@@ -55,6 +56,7 @@ export const SignIn = (props: Props) => {
             placeholder={'Email'}
           />
           <ControlledTextField
+            autoComplete={'on'}
             control={control}
             label={'Password'}
             location={'fixed'}
@@ -73,7 +75,7 @@ export const SignIn = (props: Props) => {
             Forgot Password?
           </Typography>
           <Button className={s.button} fullWidth type={'submit'}>
-            Sign Up
+            Sign In
           </Button>
           <Typography className={s.text} variant={'body2'}>
             {"Don't have an account?"}

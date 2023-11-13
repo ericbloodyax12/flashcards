@@ -43,6 +43,12 @@
   font-weight: var(--font-weight-bold);
   color: var(--color-accent-500);
   text-decoration: underline;
+
+  transition: var(--transition-duration-basic) color;
+
+  &:hover {
+    color: var(--color-accent-300);
+  }
 }
 
 .text {
@@ -52,9 +58,18 @@
 
 .recover {
   cursor: pointer;
+
   margin-top: -18px;
   margin-right: 12px;
   margin-left: auto;
+
+  text-decoration: none;
+
+  transition: var(--transition-duration-basic) color;
+
+  &:hover {
+    color: var(--color-accent-300);
+  }
 }
 
 .checkBox {

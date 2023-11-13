@@ -58,6 +58,7 @@ export const SignUp = (props: Props) => {
         </Typography>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <ControlledTextField
+            autoComplete={'on'}
             control={control}
             label={'Email'}
             location={'fixed'}
@@ -65,6 +66,7 @@ export const SignUp = (props: Props) => {
             placeholder={'Email'}
           />
           <ControlledTextField
+            autoComplete={'off'}
             control={control}
             label={'Password'}
             location={'fixed'}
@@ -73,6 +75,7 @@ export const SignUp = (props: Props) => {
             variant={'password'}
           />
           <ControlledTextField
+            autoComplete={'off'}
             control={control}
             label={'Confirm Password'}
             location={'fixed'}
