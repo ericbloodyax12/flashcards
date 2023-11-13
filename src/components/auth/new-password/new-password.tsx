@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
 
 import { Button } from '../../ui/button'
 import { Card } from '@/components/ui/card'
@@ -9,10 +8,13 @@ import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from './recover-password.module.scss'
+import s from './new-password.module.scss'
 
 const loginSchema = z.object({
-  email: z.string().min(1, { message: 'Enter email' }).email({ message: 'Invalid email' }),
+  password: z
+    .string()
+    .min(1, { message: 'Enter password' })
+    .min(3, { message: 'Too short password' }),
 })
 
 type FormValues = z.infer<typeof loginSchema>
@@ -20,10 +22,10 @@ type FormValues = z.infer<typeof loginSchema>
 type Props = {
   onSubmit: (data: FormValues) => void
 }
-export const RecoverPassword = (props: Props) => {
+export const NewPassword = (props: Props) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
-      email: '',
+      password: '',
     },
     mode: 'onSubmit',
     resolver: zodResolver(loginSchema),
@@ -36,29 +38,23 @@ export const RecoverPassword = (props: Props) => {
       <DevTool control={control} />
       <Card className={s.card}>
         <Typography className={s.title} variant={'large'}>
-          Forgot your password?
+          Create new password
         </Typography>
         <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
           <ControlledTextField
-            autoComplete={'on'}
             control={control}
-            label={'Email'}
+            label={'Password'}
             location={'fixed'}
-            name={'email'}
-            placeholder={'Email'}
+            name={'password'}
+            placeholder={'Password'}
+            variant={'password'}
           />
           <Typography className={s.text} variant={'body2'}>
-            Enter your email address and we will send you further instructions
+            Create new password and we will send you further instructions to email
           </Typography>
           <Button className={s.button} fullWidth type={'submit'}>
-            Send Instructions
+            Create New Password
           </Button>
-          <Typography className={s.text2} variant={'body2'}>
-            Did you remember your password?
-          </Typography>
-          <Typography as={Link} className={s.signInLink} to={'./sign-in'} variant={'link1'}>
-            Try logging in
-          </Typography>
         </form>
       </Card>
     </>

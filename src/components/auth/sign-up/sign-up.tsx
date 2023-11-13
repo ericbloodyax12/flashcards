@@ -15,8 +15,11 @@ import s from './sign-up.module.scss'
 const loginSchema = z
   .object({
     confirm: z.string().min(1, { message: 'Confirm your password' }),
-    email: z.string().email({ message: 'Invalid email' }),
-    password: z.string().min(3, { message: 'Too short password' }),
+    email: z.string().min(1, { message: 'Enter email' }).email({ message: 'Invalid email' }),
+    password: z
+      .string()
+      .min(1, { message: 'Enter password' })
+      .min(3, { message: 'Too short password' }),
   })
   .superRefine((data, ctx) => {
     if (data.password !== data.confirm) {
