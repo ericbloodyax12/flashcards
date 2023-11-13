@@ -8,17 +8,17 @@ import { clsx } from 'clsx'
 import s from './checkbox.module.scss'
 
 export type CheckboxProps = {
-  classname?: string
+  className?: string
   label?: string
   position?: 'left' | 'right'
 } & ComponentPropsWithoutRef<typeof RadixCheckbox.Root>
 export const Checkbox = forwardRef<ElementRef<typeof RadixCheckbox.Root>, CheckboxProps>(
-  ({ checked, classname, disabled, label, position = 'right', ...rest }, ref) => {
+  ({ checked, className, disabled, label, position = 'right', ...rest }, ref) => {
     const classes = {
       checkBlank: clsx(s.checkbox, s.checkBlank),
       icon: clsx(s.icon, s.background),
       label: disabled ? s.disabled : s.label,
-      root: clsx(s.container, position === 'left' && s.position, classname),
+      root: clsx(s.container, position === 'left' && s.position, className),
     }
     const fill = disabled ? 'var(--color-dark-100)' : 'var(--color-light-100)'
 
