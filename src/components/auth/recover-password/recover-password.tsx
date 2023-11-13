@@ -18,7 +18,7 @@ const loginSchema = z.object({
 type FormValues = z.infer<typeof loginSchema>
 
 type Props = {
-  onSubmit: (data: Omit<FormValues, 'confirm'>) => void
+  onSubmit: (data: FormValues) => void
 }
 export const RecoverPassword = (props: Props) => {
   const { control, handleSubmit } = useForm<FormValues>({
