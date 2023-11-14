@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { SignUp } from './'
-import { withRouter } from 'storybook-addon-react-router-v6'
 
 const meta = {
   component: SignUp,
-  decorators: [withRouter],
   tags: ['autodocs'],
   title: 'Auth/Sign up',
 } satisfies Meta<typeof SignUp>

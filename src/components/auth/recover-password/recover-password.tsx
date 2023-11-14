@@ -56,7 +56,7 @@ export const RecoverPassword = (props: Props) => {
           <Typography className={s.text2} variant={'body2'}>
             Did you remember your password?
           </Typography>
-          <Typography as={Link} className={s.signInLink} to={'./sign-in'} variant={'link1'}>
+          <Typography as={Link} className={s.signInLink} to={'/sign-in'} variant={'link1'}>
             Try logging in
           </Typography>
         </form>

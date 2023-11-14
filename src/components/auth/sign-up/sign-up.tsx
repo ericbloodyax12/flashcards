@@ -90,7 +90,7 @@ export const SignUp = (props: Props) => {
           <Typography className={s.text} variant={'body2'}>
             Already have an account?
           </Typography>
-          <Typography as={Link} className={s.signInLink} to={'./sign-in'} variant={'link1'}>
+          <Typography as={Link} className={s.signInLink} to={'/sign-in'} variant={'link1'}>
             Sign In
           </Typography>
         </form>

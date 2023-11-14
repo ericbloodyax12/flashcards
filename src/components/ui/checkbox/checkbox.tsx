@@ -9,7 +9,7 @@ import s from './checkbox.module.scss'
 
 export type CheckboxProps = {
   className?: string
-  label?: string
+  label: string
   position?: 'left' | 'right'
 } & ComponentPropsWithoutRef<typeof RadixCheckbox.Root>
 export const Checkbox = forwardRef<ElementRef<typeof RadixCheckbox.Root>, CheckboxProps>(

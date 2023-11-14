@@ -26,7 +26,7 @@ export const CheckEmail = ({ email }: Props) => {
           <Typography className={s.text} variant={'body2'}>
             {message}
           </Typography>
-          <Button as={Link} className={s.button} fullWidth to={'/sing-in'}>
+          <Button as={Link} className={s.button} fullWidth to={'/sign-in'}>
             Back to Sign In
           </Button>
         </div>

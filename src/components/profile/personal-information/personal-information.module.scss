@@ -1,0 +1,87 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  max-width: 420px;
+
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  width: 100%;
+  margin-bottom: 41px;
+  padding: 0 36px;
+}
+
+.title {
+  margin-top: 33px;
+  color: var(--color-light-100);
+  text-align: center;
+}
+
+.email {
+  color: var(--color-light-900);
+  opacity: 0.5;
+}
+
+.button {
+  margin: 13px auto 0;
+}
+
+.nameContainer {
+  position: relative;
+  display: flex;
+  margin: 6px auto 0;
+}
+
+.editNameButton {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+  top: calc(50% - 8px);
+  right: -25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  &:focus-visible {
+    outline: var(--outline-focus);
+  }
+}
+
+.photoContainer {
+  position: relative;
+  display: flex;
+  margin: auto;
+}
+
+.editAvatarButton {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  width: 32px;
+  height: 32px;
+
+  &:focus-visible {
+    outline: var(--outline-focus);
+  }
+}
