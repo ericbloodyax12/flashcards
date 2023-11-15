@@ -1,4 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
+
+import { useState } from 'react'
 
 import { PersonalInformation } from './'
 import ellipse from '@/assets/images/ellipse.png'
@@ -10,21 +12,27 @@ const meta = {
 } satisfies Meta<typeof PersonalInformation>
 
 export default meta
-type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-  args: {
-    avatar: ellipse,
-    email: 'your_email@domain.com',
-    name: 'John Doe',
-    onAvatarChange: () => {
-      console.info('avatar changed')
-    },
-    onLogout: () => {
-      console.info('logout')
-    },
-    onNameChange: () => {
-      console.info('name changed')
-    },
-  },
+export const Default = () => {
+  const [nickname, setNickname] = useState('John Doe')
+  const onAvatarChange = (newAvatar: File) => {
+    console.info(`new avatar: ${newAvatar.name}`)
+  }
+  const onLogout = () => {
+    console.info('log-out')
+  }
+  const onNameChange = (newName: string) => {
+    setNickname(newName)
+  }
+
+  return (
+    <PersonalInformation
+      avatar={ellipse}
+      email={'your_email@domain.com'}
+      name={nickname}
+      onAvatarChange={onAvatarChange}
+      onLogout={onLogout}
+      onNameChange={onNameChange}
+    />
+  )
 }
