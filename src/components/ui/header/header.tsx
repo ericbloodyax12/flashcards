@@ -8,12 +8,10 @@ export type HeaderProps = ComponentPropsWithoutRef<'header'>
 
 export const Header: FC<HeaderProps> = forwardRef<HTMLHeadElement, HeaderProps>(
   ({ children, className }, ref) => {
-    const classes = {
-      header: clsx(s.header, className && className),
-    }
+    const header = clsx(s.header, className && className)
 
     return (
-      <header className={classes.header} ref={ref}>
+      <header className={header} ref={ref}>
         <div className={s.container}>
           <a className={s.logo} href={'https://it-incubator.io/'}>
             <img alt={'logo'} height={36} src={logo} />
