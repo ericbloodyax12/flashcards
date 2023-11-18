@@ -1,33 +1,24 @@
-import { FC, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, FC, forwardRef } from 'react'
 
-import logo from '@/assets/images/Logo.svg'
-import { Button } from '@/components/ui/button'
-import { Typography } from '@/components/ui/typography'
+import logo from '@/assets/images/logo.svg'
+import { clsx } from 'clsx'
 
 import s from './header.module.scss'
-export type Props = {
-  className?: string
-  username?: string
-}
-export const Header: FC<Props> = forwardRef<HTMLHeadElement, Props>(
-  ({ className, username }, ref) => {
+export type HeaderProps = ComponentPropsWithoutRef<'header'>
+
+export const Header: FC<HeaderProps> = forwardRef<HTMLHeadElement, HeaderProps>(
+  ({ children, className }, ref) => {
+    const classes = {
+      header: clsx(s.header, className && className),
+    }
+
     return (
-      <header className={`${s.header} ${className ? className : ''}`} ref={ref}>
-        <div className={`container ${s.wrapper}`}>
-          <a className={s.logo} href={'#'}>
-            <img alt={'logo'} height={36} src={logo} width={156} />
+      <header className={classes.header} ref={ref}>
+        <div className={s.container}>
+          <a className={s.logo} href={'https://it-incubator.io/'}>
+            <img alt={'logo'} height={36} src={logo} />
           </a>
-          {username ? (
-            <span className={s.userInfo}>
-              {username && (
-                <Typography as={'span'} className={s.username} variant={'subtitle1'}>
-                  {username}
-                </Typography>
-              )}
-            </span>
-          ) : (
-            <Button>{'Sign In'}</Button>
-          )}
+          <div className={s.children}>{children}</div>
         </div>
       </header>
     )
